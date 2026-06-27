@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "title": "Auditing the claimed counterexample to Haiman's conjecture",
+  "audience": "researchers in algebraic geometry, commutative algebra, and computational representation theory",
+  "prerequisites": [
+    "Hilbert schemes of points",
+    "Cohen-Macaulay rings and Castelnuovo-Mumford regularity",
+    "Schur functors and Littlewood-Richardson coefficients",
+    "exact linear algebra over finite fields"
+  ],
+  "outputs": ["strict HTML", "PDF", "executed notebooks", "machine-readable certificates"],
+  "notebook_policy": {
+    "execute": true,
+    "embed_outputs": true,
+    "allow_errors": false,
+    "deterministic": true
+  },
+  "source_inputs": [
+    {
+      "path": "../Lee_principal_component_not_CM.pdf",
+      "publish": false,
+      "sha256": "78bb80a2ba5194e30df5fb775d9997d479e258efe986199693035babf2d75c6d"
+    }
+  ],
+  "acceptance": [
+    "all computational obligations are represented explicitly",
+    "all certificates have independent verifiers",
+    "strict HTML and PDF builds pass",
+    "the verdict distinguishes verified, refuted, and unresolved claims"
+  ]
+}

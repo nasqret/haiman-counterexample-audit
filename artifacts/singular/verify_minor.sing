@@ -1,0 +1,240 @@
+// Independent Singular verifier for the nonzero maximal minor in Lee's Lemma 19.
+//
+// The matrix is regenerated from the printed row families and quadratic
+// relation.  Only the finite-field assignments and zero-based pivot columns
+// from the canonical certificate are duplicated below.
+
+option(redSB);
+ring R = 1000003,(x),dp;
+
+intvec assignmentValues =
+  862231,902114,920459,686557,444566,
+  519439,378921,874935,467970,468016,
+  584953,370016,309141,405193,969369,
+  552990,606144,903829,482783,449854,
+  848842,588001,920852,92590,620434,
+  353822,501592,709658,69440,969953,
+  150322,731728,390750,10887,336086,
+  804335,385418,443899,583240,793944,
+  743287,43814,574954,720916,178974;
+
+intvec pivotColumns =
+  0,1,2,3,4,5,6,7,8,9,
+  10,11,12,13,14,15,16,17,18,19,
+  20,21,22,23,24,25,26,27,28,29,
+  30,31,32,33,34,35,36,37,38,39,
+  40,41,42,43,44,45,46,47,48,49,
+  50,51,52,53,54,55,56,59,60,61,
+  62,63,64,65,66,67,68,69,70,73,
+  74,75,76,77,78,79,80,81,82,83,
+  87,88,89,90,91,92,93,94,95,101;
+
+proc coord(int r, int s, int t)
+{
+  int lo = s;
+  int hi = t;
+  if (s > t)
+  {
+    lo = t;
+    hi = s;
+  }
+  return (100*r + 10*lo + hi);
+}
+
+list coefficientVariables;
+int r,s,t;
+for (r=1; r<=3; r++)
+{
+  for (s=4; s<=8; s++)
+  {
+    for (t=s; t<=8; t++)
+    {
+      coefficientVariables[size(coefficientVariables)+1] = coord(r,s,t);
+    }
+  }
+}
+
+proc indexOf(list values, int needle)
+{
+  int q;
+  for (q=1; q<=size(values); q++)
+  {
+    if (values[q] == needle) { return (q); }
+  }
+  return (0);
+}
+
+list rows;
+int a,j,i,k;
+for (a=1; a<=3; a++)
+{
+  // 4 <= j < i < k <= 8.
+  for (j=4; j<=8; j++)
+  {
+    for (i=j+1; i<=8; i++)
+    {
+      for (k=i+1; k<=8; k++)
+      {
+        rows[size(rows)+1] = intvec(a,j,i,k);
+      }
+    }
+  }
+  // 4 <= k < j < i <= 8.
+  for (k=4; k<=8; k++)
+  {
+    for (j=k+1; j<=8; j++)
+    {
+      for (i=j+1; i<=8; i++)
+      {
+        rows[size(rows)+1] = intvec(a,j,i,k);
+      }
+    }
+  }
+  for (k=5; k<=8; k++) { rows[size(rows)+1] = intvec(a,4,4,k); }
+  for (j=5; j<=8; j++) { rows[size(rows)+1] = intvec(a,j,4,j); }
+  rows[size(rows)+1] = intvec(a,5,5,6);
+  rows[size(rows)+1] = intvec(a,6,5,6);
+}
+
+list columns;
+for (r=1; r<=3; r++)
+{
+  for (s=1; s<=3; s++)
+  {
+    for (t=4; t<=8; t++)
+    {
+      columns[size(columns)+1] = coord(r,s,t);
+    }
+  }
+}
+for (r=4; r<=8; r++)
+{
+  for (s=4; s<=8; s++)
+  {
+    for (t=s; t<=8; t++)
+    {
+      if (!(r==s && s==t))
+      {
+        columns[size(columns)+1] = coord(r,s,t);
+      }
+    }
+  }
+}
+
+if (size(coefficientVariables) != 45) { ERROR("expected 45 variables"); }
+if (size(rows) != 90) { ERROR("expected 90 rows"); }
+if (size(columns) != 115) { ERROR("expected 115 columns"); }
+if (size(assignmentValues) != 45) { ERROR("expected 45 assignments"); }
+if (size(pivotColumns) != 90) { ERROR("expected 90 pivots"); }
+
+matrix M[90][115];
+intmat translationResidual[90][360];
+int nonzeroTerms = 0;
+int rowIndex,m,termIndex,sign,left,right,leftVariable,rightVariable;
+int variableIndex,complement,columnIndex,cr,cs,ct,translationIndex;
+intvec rowTuple;
+
+for (rowIndex=1; rowIndex<=90; rowIndex++)
+{
+  rowTuple = rows[rowIndex];
+  a = rowTuple[1];
+  j = rowTuple[2];
+  i = rowTuple[3];
+  k = rowTuple[4];
+  for (m=1; m<=8; m++)
+  {
+    for (termIndex=1; termIndex<=2; termIndex++)
+    {
+      if (termIndex == 1)
+      {
+        sign = 1;
+        left = coord(m,i,j);
+        right = coord(a,k,m);
+      }
+      else
+      {
+        sign = -1;
+        left = coord(m,k,j);
+        right = coord(a,i,m);
+      }
+      leftVariable = indexOf(coefficientVariables,left);
+      rightVariable = indexOf(coefficientVariables,right);
+      if ((leftVariable > 0) == (rightVariable > 0))
+      {
+        ERROR("each monomial must contain exactly one coefficient variable");
+      }
+      if (leftVariable > 0)
+      {
+        variableIndex = leftVariable;
+        complement = right;
+      }
+      else
+      {
+        variableIndex = rightVariable;
+        complement = left;
+      }
+
+      cr = complement div 100;
+      cs = (complement mod 100) div 10;
+      ct = complement mod 10;
+      if (cr==cs && cs==ct)
+      {
+        translationIndex = (cr-1)*45 + variableIndex;
+        translationResidual[rowIndex,translationIndex] =
+          translationResidual[rowIndex,translationIndex] + 2*sign;
+      }
+      else
+      {
+        columnIndex = indexOf(columns,complement);
+        if (columnIndex == 0) { ERROR("unlisted centered coordinate"); }
+        M[rowIndex,columnIndex] =
+          M[rowIndex,columnIndex] + sign*assignmentValues[variableIndex];
+        if (cr == ct)
+        {
+          translationIndex = (cs-1)*45 + variableIndex;
+          translationResidual[rowIndex,translationIndex] =
+            translationResidual[rowIndex,translationIndex] + sign;
+        }
+        if (cr == cs)
+        {
+          translationIndex = (ct-1)*45 + variableIndex;
+          translationResidual[rowIndex,translationIndex] =
+            translationResidual[rowIndex,translationIndex] + sign;
+        }
+      }
+    }
+  }
+}
+
+for (i=1; i<=90; i++)
+{
+  for (j=1; j<=360; j++)
+  {
+    if (translationResidual[i,j] != 0) { ERROR("translation did not cancel"); }
+  }
+}
+
+for (i=1; i<=90; i++)
+{
+  for (j=1; j<=115; j++)
+  {
+    if (M[i,j] != 0) { nonzeroTerms++; }
+  }
+}
+if (nonzeroTerms != 1410) { ERROR("expected 1410 nonzero entries"); }
+
+matrix N[90][90];
+for (i=1; i<=90; i++)
+{
+  for (j=1; j<=90; j++)
+  {
+    N[i,j] = M[i,pivotColumns[j]+1];
+  }
+}
+
+poly determinantResidue = det(N);
+if (determinantResidue != 970351) { ERROR("determinant certificate mismatch"); }
+if (rank(M) != 90) { ERROR("specialized matrix must have rank 90"); }
+
+print("{\"implementation\":\"Singular\",\"shape\":[90,115],\"nonzero_entries\":1410,\"prime\":1000003,\"rank\":90,\"determinant_mod_prime\":970351,\"translation_residual_zero\":true,\"status\":\"verified\"}");
+quit;

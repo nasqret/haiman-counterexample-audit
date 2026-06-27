@@ -1,0 +1,67 @@
+{
+  "claimed_highest_weight": [
+    133,
+    130,
+    126,
+    122,
+    119,
+    60,
+    60,
+    60
+  ],
+  "compatible_with_claimed_irrep": false,
+  "consequence": "This certified nonzero minor cannot itself lie in the claimed irreducible module. Therefore the paper's literal assertion that every maximal minor lies there is false; existence of another minor or projection remains a separate question.",
+  "dominant_reordering": [
+    141,
+    128,
+    125,
+    120,
+    116,
+    60,
+    60,
+    60
+  ],
+  "minor_weight": [
+    60,
+    60,
+    60,
+    141,
+    125,
+    128,
+    120,
+    116
+  ],
+  "perfect_matching_size": 90,
+  "row_weight_sum": [
+    150,
+    150,
+    150,
+    252,
+    234,
+    234,
+    225,
+    225
+  ],
+  "selected_column_sum_for_oriented_claim": [
+    90,
+    90,
+    90,
+    119,
+    104,
+    108,
+    103,
+    106
+  ],
+  "selected_column_weight_sum": [
+    90,
+    90,
+    90,
+    111,
+    109,
+    106,
+    105,
+    109
+  ],
+  "status": "verified",
+  "weight_homogeneous": true
+}

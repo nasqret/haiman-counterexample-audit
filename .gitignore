@@ -1,0 +1,23 @@
+# The supplied Elsevier PDF is a local research source, not a redistributable asset.
+Lee_principal_component_not_CM.pdf
+
+# Generated and temporary files
+tmp/
+_build/
+book/_build/
+output/
+*.log
+*.aux
+*.out
+*.toc
+
+# Language/tool caches
+.venv/
+.cache/
+__pycache__/
+*.pyc
+*.sage.py
+.sage/
+.julia/
+artifacts/rust/target/
+.DS_Store

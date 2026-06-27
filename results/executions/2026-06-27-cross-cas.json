@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-06-27T05:24:38+02:00",
+  "certificate": {
+    "path": "results/certificates/lemma19_nonzero_minor.json",
+    "sha256": "30fd30f657952c10aa17ee93c9f62d2dc24836c2babf56d7b4a6372ffe7da893",
+    "matrix_payload_sha256": "dc4bb49eaab862c6f11ce83b9129fd9c16adc6b6d4e591fc4be8ea972d9176ac",
+    "prime": 1000003,
+    "rank": 90,
+    "determinant_mod_prime": 970351
+  },
+  "runs": [
+    {
+      "implementation": "SageMath",
+      "version": "10.8",
+      "host": "local-arm64-macos",
+      "script": "artifacts/sage/generate_matrix.sage",
+      "script_sha256": "149f02b9b742ee6421a7a409c99a5e76ce51b489f7d8df6398c90e538dfa6fd4",
+      "status": "verified"
+    },
+    {
+      "implementation": "Rust",
+      "version": "rustc 1.96.0",
+      "host": "local-arm64-macos",
+      "script": "artifacts/rust/src/main.rs",
+      "script_sha256": "341cea97453fe5d9e9174aa7c17e8a55055613ece277546f297c6693e99ad492",
+      "tests": 3,
+      "status": "verified"
+    },
+    {
+      "implementation": "Singular",
+      "version": "4.4.1",
+      "host": "local-arm64-macos",
+      "script": "artifacts/singular/verify_minor.sing",
+      "script_sha256": "d91224c84c51ceb9684013ade03d57d9d15257d0237302c2036d58ca000e7a43",
+      "status": "verified"
+    },
+    {
+      "implementation": "Oscar.jl",
+      "version": "1.7.3",
+      "julia_version": "1.12.5",
+      "gap_jl_version": "0.16.7",
+      "singular_jl_version": "0.28.9",
+      "host": "local-arm64-macos",
+      "script": "artifacts/oscar/verify_minor.jl",
+      "script_sha256": "606b8232530dc6f324de2fe7b8a7452d7087ff206ab9002240549ccaf8348ff3",
+      "project_sha256": "732e8fb485719a7989a5f05f768cb43e4c04013e4cb4e7d1c62dd7ead8518b19",
+      "manifest_sha256": "b1019244449a604c391eda320fb0cbe0135390f7e09f25b4aee7bff6e7f4e682",
+      "status": "verified"
+    },
+    {
+      "implementation": "Magma",
+      "version": "V2.28-3",
+      "host": "lts-faculty.wmi.amu.edu.pl",
+      "remote_path": "/home/faculty/bnaskrecki/codex-haiman-audit",
+      "executed_at_local_time": "2026-06-27T05:20:40+02:00",
+      "script": "artifacts/magma/verify_minor.m",
+      "script_sha256": "87f8885e37bedcbc3bc3129514bc39669a16f8170dac78634b3bc17a279312e9",
+      "status": "verified"
+    }
+  ],
+  "common_result": {
+    "shape": [90, 115],
+    "nonzero_entries": 1410,
+    "translation_residual_zero": true,
+    "rank": 90,
+    "determinant_mod_prime": 970351
+  },
+  "boundary": "Cross-CAS agreement certifies matrix reconstruction and nonvanishing only; it does not certify the claimed Schur constituent or degree-90 minimality."
+}

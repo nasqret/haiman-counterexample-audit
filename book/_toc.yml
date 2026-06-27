@@ -1,0 +1,22 @@
+format: jb-book
+root: intro
+parts:
+  - caption: Problem and source
+    chapters:
+      - file: chapters/problem
+      - file: chapters/paper_logic
+  - caption: Reconstruction
+    chapters:
+      - file: chapters/coordinates
+      - file: chapters/lemma19
+      - file: notebooks/matrix_counts
+  - caption: Verification
+    chapters:
+      - file: chapters/certificates
+      - file: chapters/geometry
+      - file: chapters/implementations
+  - caption: Conclusion
+    chapters:
+      - file: chapters/verdict
+      - file: references
+

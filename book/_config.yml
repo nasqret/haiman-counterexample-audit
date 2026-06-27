@@ -1,0 +1,43 @@
+title: "Auditing the claimed counterexample to Haiman's conjecture"
+author: "Haiman counterexample audit project"
+copyright: "2026"
+only_build_toc_files: true
+
+execute:
+  execute_notebooks: force
+  timeout: 180
+  allow_errors: false
+
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - tasklist
+
+sphinx:
+  extra_extensions:
+    - sphinxcontrib.bibtex
+  config:
+    nitpicky: true
+    bibtex_bibfiles:
+      - references.bib
+    bibtex_reference_style: author_year
+    html_show_copyright: true
+
+html:
+  favicon: _static/favicon.svg
+  use_issues_button: true
+  use_repository_button: true
+  home_page_in_navbar: true
+  extra_footer: "Independent computational audit; the source article is not redistributed."
+
+repository:
+  url: https://github.com/nasqret/haiman-counterexample-audit
+  path_to_book: book
+  branch: main
+
+latex:
+  latex_documents:
+    targetname: haiman-counterexample-audit.tex

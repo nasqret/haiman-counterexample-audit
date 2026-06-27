@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this audit or its certificates, cite this repository and Lee's original article."
+title: "Haiman conjecture counterexample audit"
+type: software
+version: 0.1.0
+date-released: 2026-06-27
+repository-code: "https://github.com/nasqret/haiman-counterexample-audit"
+url: "https://nasqret.github.io/haiman-counterexample-audit/"
+license: MIT
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Lee
+      given-names: Kyungyong
+  title: "The singularities of the principal component of the Hilbert scheme of points"
+  journal: Journal of Algebra
+  volume: 324
+  issue: 6
+  pages: 1347-1363
+  year: 2010
+  doi: 10.1016/j.jalgebra.2010.07.001

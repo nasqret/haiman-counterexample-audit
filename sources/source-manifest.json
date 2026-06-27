@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "lee2010",
+      "local_path": "Lee_principal_component_not_CM.pdf",
+      "title": "The singularities of the principal component of the Hilbert scheme of points",
+      "author": "Kyungyong Lee",
+      "journal": "Journal of Algebra",
+      "volume": 324,
+      "pages": "1347-1363",
+      "year": 2010,
+      "doi": "10.1016/j.jalgebra.2010.07.001",
+      "sha256": "78bb80a2ba5194e30df5fb775d9997d479e258efe986199693035babf2d75c6d",
+      "page_count": 17,
+      "redistribute": false
+    }
+  ]
+}

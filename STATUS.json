@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-06-27T05:24:38+02:00",
+  "project": "haiman-counterexample-audit",
+  "verdict": "open_audit",
+  "source": {
+    "file": "Lee_principal_component_not_CM.pdf",
+    "tracked": false,
+    "sha256": "78bb80a2ba5194e30df5fb775d9997d479e258efe986199693035babf2d75c6d",
+    "doi": "10.1016/j.jalgebra.2010.07.001"
+  },
+  "target_claim": "The principal component of Hilb^9(C^8) is not locally Cohen-Macaulay at m^2.",
+  "critical_obligation": "Reconstruct and certify all computational assertions in Lemma 19, especially degree-90 minimality.",
+  "evidence": {
+    "paper_identified": "certified",
+    "matrix_dimensions": "reproduced_by_counting",
+    "matrix_factorization": "cross_checked_sage_magma_singular_oscar_rust",
+    "nonzero_maximal_minor": "certified_five_language_agreement",
+    "ideal_membership": "proved_dense_kernel_argument",
+    "schur_membership": "literal_any_minor_claim_refuted_required_constituent_still_open",
+    "degree_89_predecessor_enumeration": "certified_sage_rust",
+    "degree_89_exclusion": "pending",
+    "cohen_macaulay_conclusion": "pending"
+  },
+  "environments": {
+    "local_sage": "available",
+    "local_singular": "available",
+    "local_julia": "1.12.5",
+    "local_oscar": "1.7.3",
+    "local_rust": "available",
+    "local_magma": "unavailable_remote_lts_faculty_v2.28-3_verified",
+    "wmi_slurm": "operational_at_snapshot",
+    "project_jobs": []
+  },
+  "certificates": {
+    "matrix_payload_sha256": "dc4bb49eaab862c6f11ce83b9129fd9c16adc6b6d4e591fc4be8ea972d9176ac",
+    "prime": 1000003,
+    "rank": 90,
+    "determinant_mod_prime": 970351
+    ,"predecessor_payload_sha256": "57e87fae955efedd5211eab5fed48e154a2df1266b9414670a4f4def689e3c40",
+    "lr_predecessor_count": 102,
+    "tensor_predecessor_count": 15
+  },
+  "publication": {
+    "local_git": "initialized",
+    "github_repository": "pending",
+    "github_pages": "pending",
+    "source_pdf_publishable": false
+  }
+}
