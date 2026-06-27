@@ -1,0 +1,457 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  urlcolor=blue!60!black,
+  citecolor=blue!60!black
+}
+
+\setlist[itemize]{leftmargin=1.5em}
+\setlist[enumerate]{leftmargin=1.7em}
+
+\newcommand{\cert}[1]{\path{#1}}
+\newcommand{\level}[1]{\textbf{\textsf{#1}}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Hilb}{\operatorname{Hilb}}
+\newcommand{\wt}{\operatorname{wt}}
+
+\title{Technical report on the second literal assertion in Lee's Lemma 19}
+\author{Haiman counterexample audit project}
+\date{2026-06-27}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This report expands the short section
+\href{https://nasqret.github.io/haiman-counterexample-audit/chapters/lemma19.html#a-second-literal-assertion-fails}{``A second literal assertion fails''}
+in the project documentation.  The purpose is narrow: explain exactly what was
+computed, which representation-theoretic facts are being used, why no Borel
+choice is needed for this particular negative test, and what remains open.
+
+The current audit proves that one printed sentence in Lee's Lemma 19 is false
+if read literally: not every \(89\times 89\) minor belongs to one of the 15
+degree-89 predecessor modules.  This is a serious gap in the written proof, but
+it is not by itself a proof that the claimed degree-90 generator is nonminimal,
+nor a proof that Lee's theorem is false.
+\end{abstract}
+
+\section{Executive summary}
+
+The source paper claims that a degree-90 Schur module
+\[
+  S_\nu W,\qquad
+  \nu=(133,130,126,122,119,60,60,60),
+\]
+occurs among the minimal generators of \(J_8\), the ideal of the principal
+component \(P_8 \subset \Hilb^9(\mathbb C^8)\) near \(\mathfrak m^2\).  Lemma 19
+is the computational step intended to prove this.
+
+The audit has reconstructed Lee's \(90\times115\) matrix \(M\) and certified a
+nonzero \(90\times90\) minor.  The section studied here concerns a different
+sentence on the degree-89 side.  The paper says, in effect, that each
+\(89\times89\) minor belongs to one of 15 modules obtained by a
+Littlewood--Richardson search.  The audit produced an explicit counterexample
+to that literal sentence.
+
+\begin{center}
+\begin{tabular}{p{0.22\linewidth}p{0.68\linewidth}}
+\toprule
+Evidence level & Statement \\
+\midrule
+\level{Computation} &
+Deleting row 0 and the first pivot column from the certified full-rank
+\(90\times90\) pivot minor gives a nonzero \(89\times89\) determinant:
+\[
+421057 \pmod {1000003}.
+\]
+\\
+\level{Computation} &
+The same minor is torus-weight homogeneous of weight
+\[
+(60,59,59,140,123,126,119,115),
+\]
+whose dominant reordering is
+\[
+(140,126,123,119,115,60,59,59).
+\]
+\\
+\level{Computation} &
+The 15 certified degree-89 predecessor partitions all have first part at most
+132. \\
+\level{Theorem} &
+Every weight of the irreducible \(\GL(W)\)-module \(S_\lambda W\) has dominant
+representative dominated by \(\lambda\).  In particular, its first part is at
+most \(\lambda_1\). \\
+\level{Conclusion} &
+The explicit nonzero \(89\times89\) minor is not a weight vector in any of
+the 15 listed degree-89 modules.  Hence the literal sentence ``each
+\(89\times89\) minor belongs to one of the 15 modules'' is false as written. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Why torus weights are enough here}
+
+The user's concern is exactly the right one: the published webpage section is
+short and mentions torus weights, while highest-weight statements usually
+involve a Borel subgroup.  The distinction is as follows.
+
+\subsection{Positive membership needs more than a weight}
+
+To prove that a vector generates or lies in a particular copy of
+\(S_\lambda W\), a torus weight alone is not sufficient.  One normally also
+checks a highest-weight condition for a chosen Borel, or computes the
+projection to the desired isotypic component.  This is why the audit does not
+claim that the weight-compatible \(90\times90\) minor proves Lee's
+Schur-module assertion.
+
+Indeed, the audit found a nonzero \(90\times90\) minor of the claimed torus
+weight
+\[
+(60,60,60,133,130,126,122,119),
+\]
+with determinant \(300834 \pmod {1000003}\).  But for the Borel order
+\[
+4<5<6<7<8<1<2<3,
+\]
+five simple raising derivatives are nonzero:
+\[
+\begin{array}{c|ccccc}
+ \text{operator} & E_{45} & E_{56} & E_{67} & E_{78} & E_{23} \\
+\hline
+ \text{residue mod }1000003 & 685026 & 176188 & 140239 & 78485 & 605583 .
+\end{array}
+\]
+Thus that selected determinant is not itself a highest-weight vector.  This is
+a negative computation about one determinant only; it does not rule out a
+different linear combination or a nonzero projection.
+
+\subsection{Negative membership can be disproved by a missing weight}
+
+The \(89\times89\) statement is different.  We are not trying to prove positive
+membership in one of the 15 modules.  We are disproving membership by showing
+that the vector has a torus weight that cannot occur in any of them.
+
+Let \(T\subset\GL(W)\) be the diagonal torus.  Any finite-dimensional rational
+\(\GL(W)\)-module decomposes into \(T\)-weight spaces.  An irreducible
+\(S_\lambda W\) has only weights whose dominant representative is dominated by
+\(\lambda\).  This is a standard highest-weight theorem, but the test itself
+does not require choosing a Borel after the list of highest weights is fixed.
+
+Therefore, if a homogeneous determinant \(f\) has torus weight \(\alpha\), and
+the dominant reordering \(\alpha^+\) is not dominated by any of the 15
+candidate highest weights \(\lambda\), then \(f\) cannot be an element of their
+direct sum.  It cannot be hidden there under another Borel convention; the
+torus weight is already impossible.
+
+\section{The reconstructed matrix and the certified minor}
+
+Lee's construction isolates the 45 variables
+\[
+ A=\{p_{r,st}:1\le r\le3,\;4\le s\le t\le8\}.
+\]
+After centering the complementary variables, the selected equations have the
+form
+\[
+ C=M(A)z,
+\]
+where \(M\) is a \(90\times115\) matrix with entries \(0,\pm p_{r,st}\).
+
+The matrix reconstruction is not a transcription of entries.  It is generated
+from the printed index formulas.  The canonical sparse manifest has:
+\[
+\begin{array}{rl}
+\text{shape} &= 90\times115,\\
+\text{coefficient variables} &= 45,\\
+\text{nonzero entries} &= 1410.
+\end{array}
+\]
+The payload SHA-256 is
+\[
+\text{\scriptsize\ttfamily dc4bb49eaab862c6f11ce83b9129fd9c16adc6b6d4e591fc4be8ea972d9176ac}.
+\]
+
+At the recorded specialization modulo \(p=1000003\), the matrix has rank 90.
+The pivot minor has determinant
+\[
+  970351 \pmod {1000003}.
+\]
+This proves that the corresponding integer determinant polynomial is not zero
+over characteristic zero.
+
+For the degree-89 test, the audit deletes:
+\[
+ \text{row }0,\qquad \text{pivot-column position }0
+ \quad(\text{global column }0)
+\]
+from the same certified pivot minor.  The resulting \(89\times89\) determinant
+is
+\[
+  421057 \pmod {1000003}.
+\]
+Thus this \(89\times89\) determinant is also a nonzero polynomial in
+characteristic zero.
+
+\section{Weight calculation}
+
+The coordinate \(p_{r,st}\) has torus weight
+\[
+ \wt(p_{r,st})=(1,\ldots,1)-e_r+e_s+e_t.
+\]
+The matrix entries are compatible with row and column weights: an entry in row
+\(\rho\), column \(\gamma\), and coefficient variable \(a\) satisfies
+\[
+ \wt(a)=\wt(\rho)-\wt(\gamma).
+\]
+Consequently every nonzero monomial in a fixed minor determinant has the same
+total torus weight:
+\[
+ \wt(\det M_{R,C})
+ =
+ \sum_{\rho\in R}\wt(\rho)-\sum_{\gamma\in C}\wt(\gamma).
+\]
+
+For the certified \(89\times89\) minor this gives
+\[
+\alpha=(60,59,59,140,123,126,119,115).
+\]
+Reordering into the dominant chamber gives
+\[
+\alpha^+=(140,126,123,119,115,60,59,59).
+\]
+
+\section{The 15 predecessor partitions}
+
+The audit reconstructs the Littlewood--Richardson search appearing in Lee's
+Lemma 19.  Let
+\[
+\mu=(3,1,1,1,1,1,1,0),\qquad
+\nu=(133,130,126,122,119,60,60,60).
+\]
+The certificate records:
+\begin{itemize}
+  \item 102 partitions \(\lambda\) with \(c^\nu_{\lambda,\mu}>0\);
+  \item 87 excluded by tensor-product dominance for the 89th tensor power;
+  \item 15 remaining candidates, each with an explicit 88-step nonzero
+  Littlewood--Richardson chain proving tensor occurrence.
+\end{itemize}
+
+The 15 endpoint partitions are:
+
+\begin{center}
+\begin{longtable}{r>{\(\displaystyle}l<{\)}}
+\toprule
+\# & \lambda\\
+\midrule
+1 & (130,129,125,121,118,60,59,59)\\
+2 & (131,128,125,121,118,60,59,59)\\
+3 & (131,129,124,121,118,60,59,59)\\
+4 & (131,129,125,120,118,60,59,59)\\
+5 & (131,129,125,121,117,60,59,59)\\
+6 & (132,127,125,121,118,60,59,59)\\
+7 & (132,128,124,121,118,60,59,59)\\
+8 & (132,128,125,120,118,60,59,59)\\
+9 & (132,128,125,121,117,60,59,59)\\
+10 & (132,129,123,121,118,60,59,59)\\
+11 & (132,129,124,120,118,60,59,59)\\
+12 & (132,129,124,121,117,60,59,59)\\
+13 & (132,129,125,119,118,60,59,59)\\
+14 & (132,129,125,120,117,60,59,59)\\
+15 & (132,129,125,121,116,60,59,59)\\
+\bottomrule
+\end{longtable}
+\end{center}
+
+Every one has \(\lambda_1\le132\).
+
+\section{The actual contradiction to the literal sentence}
+
+For a weight \(\alpha\) to occur in \(S_\lambda W\), its dominant reordering
+\(\alpha^+\) must be dominated by \(\lambda\).  Dominance begins with the
+first prefix inequality:
+\[
+ \alpha^+_1 \le \lambda_1.
+\]
+For the certified \(89\times89\) minor:
+\[
+ \alpha^+_1=140.
+\]
+For every one of the 15 predecessor candidates:
+\[
+ \lambda_1\le132.
+\]
+Therefore
+\[
+ \alpha^+\nleq \lambda
+\]
+for all 15 candidates.  The determinant cannot be a weight vector in any of
+the 15 modules.  Since the determinant is nonzero, this is a concrete
+counterexample to the literal reading of the sentence that each
+\(89\times89\) minor belongs to one of those modules.
+
+\section{What this does and does not prove}
+
+\subsection{What is proved}
+
+\begin{enumerate}
+  \item The \(89\times89\) determinant specified in
+  \cert{results/certificates/lemma19_89_minor_weight_audit.json} is
+  nonzero in characteristic zero.
+  \item Its torus weight is
+  \((60,59,59,140,123,126,119,115)\).
+  \item This weight cannot occur in any of the 15 certified predecessor
+  irreducibles.
+  \item Therefore the printed universal statement about all \(89\times89\)
+  minors is false if read literally.
+\end{enumerate}
+
+\subsection{What is not proved}
+
+\begin{enumerate}
+  \item This does not prove that Lee's claimed degree-90 generator is
+  nonminimal.
+  \item This does not prove that \(S_\nu W\) is absent from the span of all
+  \(90\times90\) maximal minors.
+  \item This does not prove that the theorem of the paper is false.
+  \item This does not rule out a corrected interpretation such as: ``each
+  relevant \(89\times89\) component that can contribute to \(S_\nu W\) lies in
+  one of these 15 modules.''
+\end{enumerate}
+
+The last point is important.  The displayed \(89\times89\) minor has dominant
+first part 140, so it is not even contained in \(\nu\), whose first part is
+133.  Hence this particular \(89\times89\) module is not an obvious source for
+the target \(S_\nu W\) after multiplication by the degree-one coordinate
+representation.  It refutes the paper's broad wording, but it does not by
+itself exhibit a lower-degree generator that produces the target degree-90
+copy.
+
+\section{How it could still affect minimality}
+
+Lee's intended minimality argument must show that the target degree-90 copy of
+\(S_\nu W\) is not generated by degree-89 elements of \(J_8\).  A complete
+certificate should identify the multiplication map
+\[
+ R_1\otimes (J_8)_{89}\longrightarrow (J_8)_{90}
+\]
+and prove that the relevant \(S_\nu W\)-projection is not in the image.
+
+The current \(89\times89\) counterexample matters because it shows that the
+published bookkeeping of degree-89 minors is not literally complete.  This
+creates two possible outcomes:
+
+\begin{itemize}
+  \item \textbf{Repair path.}  The author only needed the 15 modules that can
+  map to \(S_\nu W\), and the extra \(89\times89\) minors are irrelevant to the
+  target projection.  Then the paper's wording is wrong, but the construction
+  may still be repairable.
+  \item \textbf{Failure path.}  The missing degree-89 bookkeeping hides a
+  nonzero image into the claimed degree-90 constituent, making the purported
+  degree-90 generator nonminimal.  Proving this requires an explicit
+  projection or multiplication certificate, not just the weight obstruction in
+  this report.
+\end{itemize}
+
+\section{Evidence table}
+
+\begin{center}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.21\linewidth}
+                >{\raggedright\arraybackslash}p{0.34\linewidth}
+                >{\raggedright\arraybackslash}p{0.33\linewidth}}
+\toprule
+Item & Source of evidence & Status \\
+\midrule
+Matrix shape \(90\times115\) and 1410 sparse entries &
+SageMath generator plus Rust, Singular, Oscar, Magma verifiers &
+\level{Computation/certificate} \\
+\midrule
+Full-rank \(90\times90\) specialization &
+\cert{lemma19_nonzero_minor.json}; determinant \(970351\) modulo \(1000003\) &
+\level{Computation/certificate} \\
+\midrule
+Nonzero \(89\times89\) minor &
+\cert{lemma19_89_minor_weight_audit.json}; determinant \(421057\) modulo
+\(1000003\) &
+\level{Computation/certificate} \\
+\midrule
+Weight formula for coordinates and determinants &
+Torus action on \(p_{r,st}\); additive row/column factorization &
+\level{Theorem plus checked bookkeeping} \\
+\midrule
+List of 15 predecessor partitions &
+Sage LR enumeration plus independent Rust LR-tableau verifier &
+\level{Computation/certificate} \\
+\midrule
+Weight exclusion from the 15 modules &
+Highest-weight theory: weights of \(S_\lambda W\) are dominated by \(\lambda\) &
+\level{Theorem} \\
+\midrule
+Degree-90 minimality &
+Requires the \(S_\nu W\)-projection of \(R_1(J_8)_{89}\to(J_8)_{90}\) &
+\level{Open} \\
+\midrule
+Lee's theorem and Haiman counterexample &
+Requires Lemma 19 plus downstream regularity and geometry audit &
+\level{Open} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Reproduction commands}
+
+The relevant local commands are:
+\begin{verbatim}
+./scripts/validate-all.sh
+
+python3 artifacts/common/analyze_minor_weight.py
+
+cargo run --quiet --locked \
+  --manifest-path artifacts/rust/Cargo.toml
+\end{verbatim}
+
+The important certificate files are:
+\begin{itemize}
+  \item \cert{results/certificates/lemma19_89_minor_weight_audit.json};
+  \item \cert{results/certificates/lemma19_claimed_weight_raising_audit.json};
+  \item \cert{results/certificates/lemma19_predecessor_partitions.json};
+  \item \cert{results/certificates/lemma19_nonzero_minor.json}.
+\end{itemize}
+
+\section{Recommended next checks}
+
+\begin{enumerate}
+  \item Replace the phrase ``all \(89\times89\) minors'' by the precise
+  representation-theoretic subspace that can contribute to \(S_\nu W\), if such
+  a repair exists.
+  \item Compute the \(S_\nu W\)-isotypic projection of the maximal-minor span.
+  \item Compute the \(S_\nu W\)-projection of the multiplication image from
+  degree 89.
+  \item Decide whether the target degree-90 copy is outside that image
+  (minimality) or inside that image (nonminimality).
+  \item Only after that, return to the geometric and regularity steps of the
+  paper.
+\end{enumerate}
+
+\section{Current verdict}
+
+The current verdict remains \textbf{open audit}.  The second literal assertion
+in Lemma 19 is refuted as written, and this is a natural place to investigate
+the possible nonminimality of the claimed degree-90 generator.  However, the
+available evidence does not yet prove nonminimality.  The next decisive object
+is not another isolated torus weight, but the actual \(S_\nu W\)-projection of
+the degree-90 minors and the multiplication image from degree 89.
+
+\end{document}
