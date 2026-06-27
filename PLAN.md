@@ -64,9 +64,9 @@ Status values: `[ ]` pending, `[~]` in progress, `[x]` verified, `[!]` blocked o
 
 - [x] Run fast local certificates.
 - [x] Benchmark the portable verifier before sizing the SLURM job.
-- [ ] Submit reviewed checkpointed CPU jobs only if local computation is insufficient.
-- [ ] Record job IDs, commits, inputs, resources, and outputs immediately.
-- [ ] Fetch and hash remote results.
+- [x] Submit one reviewed, isolated WMI CPU cross-check.
+- [x] Record job ID, commit, inputs, resources, and output immediately.
+- [x] Fetch and hash remote result for job 105520.
 
 ## Phase 8 - Documentation and verdict
 

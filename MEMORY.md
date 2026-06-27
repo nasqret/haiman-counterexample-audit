@@ -82,6 +82,8 @@ Every maximal minor does lie in `J_8`: on `P_8`, the selected equations give `Mz
 - WMI gateway/SLURM: operational on 2026-06-27; VPN route used `utun19`.
 - Magma V2.28-3 on `lts-faculty.wmi.amu.edu.pl` independently reproduced
   shape, support, translation cancellation, rank, and determinant.
+- WMI SLURM job `105520` completed on `c2n2` with exit `0:0`, independently
+  matching the canonical payload hash and determinant from commit `caed815`.
 
 ## Cross-CAS checkpoint
 

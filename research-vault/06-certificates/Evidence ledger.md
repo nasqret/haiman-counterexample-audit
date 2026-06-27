@@ -19,3 +19,7 @@ A failed or contradictory artifact is retained and labeled; it is not overwritte
 
 Environment versions, script hashes, and the remote Magma run are recorded in
 `results/executions/2026-06-27-cross-cas.json`.
+
+WMI SLURM job `105520` independently reproduced the canonical matrix payload
+and determinant on compute node `c2n2`; its output and resource record are in
+`results/cluster/`.

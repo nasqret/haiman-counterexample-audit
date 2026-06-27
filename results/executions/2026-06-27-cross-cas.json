@@ -66,5 +66,18 @@
     "rank": 90,
     "determinant_mod_prime": 970351
   },
+  "cluster_crosscheck": {
+    "job_id": 105520,
+    "commit": "caed815f21f360fcd610dca31c25ca08cf167106",
+    "host": "c2n2.cluster.wmi.amu.edu.pl",
+    "python_version": "3.10.12",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "max_rss": "312K",
+    "output_sha256": "8bffbfedf3346525d5b13c1ed13e64a6b02e4c3d72bca52ce3fd0bc6d3abf763",
+    "matrix_payload_sha256": "dc4bb49eaab862c6f11ce83b9129fd9c16adc6b6d4e591fc4be8ea972d9176ac",
+    "determinant_mod_prime": 970351,
+    "status": "verified"
+  },
   "boundary": "Cross-CAS agreement certifies matrix reconstruction and nonvanishing only; it does not certify the claimed Schur constituent or degree-90 minimality."
 }

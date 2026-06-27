@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-06-27T05:24:38+02:00",
+  "updated_at": "2026-06-27T05:27:30+02:00",
   "project": "haiman-counterexample-audit",
   "verdict": "open_audit",
   "source": {
@@ -29,8 +29,16 @@
     "local_oscar": "1.7.3",
     "local_rust": "available",
     "local_magma": "unavailable_remote_lts_faculty_v2.28-3_verified",
-    "wmi_slurm": "operational_at_snapshot",
-    "project_jobs": []
+    "wmi_slurm": "job_105520_verified",
+    "project_jobs": [
+      {
+        "job_id": 105520,
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "commit": "caed815f21f360fcd610dca31c25ca08cf167106",
+        "output_sha256": "8bffbfedf3346525d5b13c1ed13e64a6b02e4c3d72bca52ce3fd0bc6d3abf763"
+      }
+    ]
   },
   "certificates": {
     "matrix_payload_sha256": "dc4bb49eaab862c6f11ce83b9129fd9c16adc6b6d4e591fc4be8ea972d9176ac",

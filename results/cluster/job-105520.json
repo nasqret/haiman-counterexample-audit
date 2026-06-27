@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "job_id": 105520,
+  "job_name": "hca-cert",
+  "state": "COMPLETED",
+  "exit_code": "0:0",
+  "commit": "caed815f21f360fcd610dca31c25ca08cf167106",
+  "submitted_at": "2026-06-27T05:26:43+02:00",
+  "started_at": "2026-06-27T05:26:43+02:00",
+  "ended_at": "2026-06-27T05:26:43+02:00",
+  "host": "c2n2.cluster.wmi.amu.edu.pl",
+  "partition": "cpu",
+  "nodes": 1,
+  "cpus": 1,
+  "requested_memory": "1G",
+  "max_rss": "312K",
+  "time_limit": "00:05:00",
+  "elapsed": "00:00:00",
+  "command": "python3 artifacts/common/verify_specialization.py",
+  "output": "results/cluster/slurm-105520.out",
+  "output_sha256": "8bffbfedf3346525d5b13c1ed13e64a6b02e4c3d72bca52ce3fd0bc6d3abf763",
+  "status": "verified"
+}

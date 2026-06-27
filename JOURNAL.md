@@ -98,3 +98,16 @@ On the principal component, `C=Mz=0`. The standard radical simplex `{0,e_1,...,e
 
 This agreement closes the reconstruction/nonvanishing engineering question.
 It does not close highest-weight membership or degree-89 exclusion.
+
+## 2026-06-27 - WMI batch cross-check
+
+- Submitted reviewed CPU job `105520` from commit
+  `caed815f21f360fcd610dca31c25ca08cf167106` after confirming that no
+  equivalent project job existed.
+- Resource request: one CPU, 1 GB RAM, five-minute limit on partition `cpu`.
+- Result: `COMPLETED`, exit code `0:0`, elapsed below one second, batch MaxRSS
+  312 KB on `c2n2.cluster.wmi.amu.edu.pl`.
+- Python 3.10.12 independently regenerated the canonical payload hash and
+  determinant 970351 modulo 1000003.
+- Output SHA-256:
+  `8bffbfedf3346525d5b13c1ed13e64a6b02e4c3d72bca52ce3fd0bc6d3abf763`.
