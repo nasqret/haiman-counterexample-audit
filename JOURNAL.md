@@ -146,3 +146,21 @@ It does not close highest-weight membership or degree-89 exclusion.
 Boundary: these certificates refute literal sentences in Lemma 19, but they do
 not yet prove that the required Schur constituent is absent from the span of all
 maximal minors.
+
+## 2026-06-27 - Plethysm-coefficient route sizing
+
+- Reduced the coarse necessary representation question to the coefficient of
+  `S_(43,40,36,32,29)V` in `S_(30,30,30)(Sym^2 V)`.
+- A first modular 4D NTT prototype returned nonzero residues, but it was
+  rejected before use: transform length `64` causes cyclic wraparound, and
+  degree sums such as `beta_i + 64` can alias into the queried coefficient.
+- A one-color multigraph DP with caps `(47,43,38,33,29)` is feasible but large:
+  table sizes for edge counts 28 through 32 are roughly 437k, 488k, 542k, 598k,
+  and 655k degree states.
+- A direct semistandard-tableau chain DP for shape `(30,30,30)` is cleaner, but
+  the naive Python transition loop already reaches 2.7M ending states and 68M
+  transitions at column 5.
+
+Next implementation should use an optimized Rust tableau DP with componentwise
+zeta transforms over the 455 strict column types, or a high-memory nonwrapping
+convolution. The invalid cyclic NTT residue must not be cited.
