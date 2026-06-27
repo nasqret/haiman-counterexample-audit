@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-06-27T05:27:30+02:00",
+  "updated_at": "2026-06-27T05:31:30+02:00",
   "project": "haiman-counterexample-audit",
   "verdict": "open_audit",
   "source": {
@@ -50,9 +50,18 @@
     "tensor_predecessor_count": 15
   },
   "publication": {
-    "local_git": "initialized",
-    "github_repository": "pending",
-    "github_pages": "pending",
+    "local_git": "committed",
+    "github_repository": "https://github.com/nasqret/haiman-counterexample-audit",
+    "github_pages": "https://nasqret.github.io/haiman-counterexample-audit/",
+    "validation_run": {
+      "id": 28277277250,
+      "conclusion": "success"
+    },
+    "pages_run": {
+      "id": 28277277253,
+      "conclusion": "success"
+    },
+    "live_visual_qa": "passed",
     "source_pdf_publishable": false
   }
 }

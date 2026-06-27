@@ -6,9 +6,9 @@ Status values: `[ ]` pending, `[~]` in progress, `[x]` verified, `[!]` blocked o
 
 - [x] Identify and hash the supplied source.
 - [x] Create memory, journal, plan, status file, Obsidian vault, and Jupyter Book scaffold.
-- [x] Initialize local git and record the first checkpoint.
-- [ ] Create a public GitHub repository without redistributing the source PDF.
-- [ ] Enable GitHub Pages from the validated book build.
+- [x] Initialize local git and record reproducible checkpoints.
+- [x] Create a public GitHub repository without redistributing the source PDF.
+- [x] Enable and visually verify GitHub Pages from the validated book build.
 
 ## Phase 1 - Mathematical audit
 

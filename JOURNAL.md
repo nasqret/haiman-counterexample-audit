@@ -111,3 +111,15 @@ It does not close highest-weight membership or degree-89 exclusion.
   determinant 970351 modulo 1000003.
 - Output SHA-256:
   `8bffbfedf3346525d5b13c1ed13e64a6b02e4c3d72bca52ce3fd0bc6d3abf763`.
+
+## 2026-06-27 - Public reproducibility release
+
+- Published the source-PDF-free repository at
+  `https://github.com/nasqret/haiman-counterexample-audit`.
+- Enabled workflow-based GitHub Pages at
+  `https://nasqret.github.io/haiman-counterexample-audit/`.
+- Validation run `28277277250` passed both the clean book build and locked Rust
+  tests.
+- Pages run `28277277253` built and deployed successfully.
+- Live browser QA confirmed navigation, formulas, styling, and the current
+  verdict; no page-load failure was observed.

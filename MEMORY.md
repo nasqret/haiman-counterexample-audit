@@ -100,3 +100,10 @@ entries, zero translation residual, rank 90, and determinant 970351 modulo
 - A nonzero specialization modulo a prime certifies that the corresponding integer polynomial is nonzero in characteristic zero.
 - Finite-field evidence for ideal membership or representation membership is not silently promoted to characteristic-zero proof.
 - Never alter or cancel unrelated WMI jobs.
+
+## Public endpoints
+
+- Repository: `https://github.com/nasqret/haiman-counterexample-audit`
+- Documentation: `https://nasqret.github.io/haiman-counterexample-audit/`
+- First successful validation run: `28277277250`.
+- First successful Pages run: `28277277253`.

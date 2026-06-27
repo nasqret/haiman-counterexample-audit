@@ -6,6 +6,8 @@
 - Local toolchain: SageMath, Singular, Oscar/Julia, Rust available
 - Remote infrastructure: WMI operational at the 2026-06-27 snapshot
 - Project jobs: WMI job 105520 completed with exit 0:0; output archived and hashed
+- Public repository: https://github.com/nasqret/haiman-counterexample-audit
+- Live book: https://nasqret.github.io/haiman-counterexample-audit/
 - Matrix reconstruction: SageMath/Magma/Singular/Oscar/Rust agree on 1410 sparse entries
 - Nonvanishing: certified by a rank-90 specialization and determinant residue
 - Current work: ideal/Schur membership and degree-89 minimality obstruction

@@ -1,5 +1,8 @@
 # Haiman conjecture counterexample audit
 
+[Documentation](https://nasqret.github.io/haiman-counterexample-audit/) ·
+[GitHub repository](https://github.com/nasqret/haiman-counterexample-audit)
+
 This repository reconstructs and independently audits the counterexample claimed in Kyungyong Lee, *The singularities of the principal component of the Hilbert scheme of points*, Journal of Algebra 324 (2010), 1347-1363, DOI: 10.1016/j.jalgebra.2010.07.001.
 
 > **Current verdict: open audit.** The paper's conclusion has not yet been independently certified here. One part of Lemma 19 is now certified: a reconstructed maximal minor is nonzero. Schur-module membership and degree-90 minimality remain open.
@@ -39,7 +42,7 @@ generator of `J_8`.
 
 ## Reproducibility entrypoints
 
-These will become authoritative as implementations land:
+Authoritative local entrypoints:
 
 ```bash
 ./scripts/validate-all.sh
