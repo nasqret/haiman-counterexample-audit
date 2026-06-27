@@ -22,7 +22,15 @@ where \(M\) is \(90\times115\), linear in the 45 coordinates \(A\), and \(z\) li
 - a finite-field full-rank specialization and pivot minor;
 - a characteristic-zero explanation of nonvanishing;
 - an ideal-membership proof on the reduced principal component;
-- a highest-weight certificate;
+- a highest-weight or isotypic-projection certificate;
 - a complete degree-89 predecessor/exclusion certificate.
+
+Current negative evidence:
+
+- a certified nonzero maximal minor has weight outside the claimed irreducible;
+- a certified nonzero weight-compatible maximal minor is not itself a
+  highest-weight vector;
+- a certified nonzero `89 x 89` minor has weight outside all 15 predecessor
+  modules.
 
 See [[Matrix M specification]] and [[../06-certificates/Evidence ledger|Evidence ledger]].

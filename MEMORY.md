@@ -45,8 +45,9 @@ On 2026-06-27, SageMath reconstructed the matrix directly from the printed relat
 - Determinant residue: `970351`.
 
 Logical status: nonvanishing in characteristic zero is certified. Ideal membership
-is proved by the dense-kernel argument below. Schur-module membership and
-minimality are still pending.
+is proved by the dense-kernel argument below. Literal Schur-module membership
+sentences in Lemma 19 are refuted as written, but the possible existence of a
+hidden projection or linear combination is still pending.
 
 ## Certified milestone: the fifteen predecessor partitions
 
@@ -71,6 +72,18 @@ The paper's literal statement that the determinant of any maximal minor lies in 
 whose dominant reordering `(141,128,125,120,116,60,60,60)` is not dominated by `nu=(133,130,126,122,119,60,60,60)`. It therefore cannot be a weight of `S_nu`. Python and Rust independently verify the additive weight factorization.
 
 This does not yet refute the existence of the required `S_nu` constituent. A different nonzero minor with Weyl-orbit weight `(60,60,60,133,130,126,122,119)` has been certified (determinant `300834 mod 1000003`), but weight compatibility alone is not pure Schur-module membership.
+
+That weight-compatible minor is not itself a highest-weight vector for the
+Borel order `(4,5,6,7,8,1,2,3)`: the raising derivatives have nonzero residues
+`E45=685026`, `E56=176188`, `E67=140239`, `E78=78485`, and `E23=605583`
+modulo `1000003`.
+
+The literal `89 x 89` minor sentence is also false as written. Deleting row 0
+and the first pivot column from the certified full-rank pivot minor gives a
+nonzero `89 x 89` determinant `421057 mod 1000003` with dominant weight
+`(140,126,123,119,115,60,59,59)`. Every one of the 15 certified degree-89
+predecessor partitions has first part at most 132, so this minor is not a
+weight of any of those modules.
 
 Every maximal minor does lie in `J_8`: on `P_8`, the selected equations give `Mz=0`; the vector `z` is nonzero on a nonempty open subset (witnessed by the radical standard simplex), hence every maximal minor vanishes on a dense subset of the reduced irreducible component and therefore belongs to its defining ideal.
 

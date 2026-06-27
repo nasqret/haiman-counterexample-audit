@@ -36,6 +36,14 @@ For a selected determinant $f$, a highest-weight certificate must check both:
 
 These operations should be implemented on the determinant representation or by polynomial identity testing with rigorous bounds, avoiding expansion whenever possible.
 
+Current certificates separate three facts that the paper states together:
+
+- `lemma19_pivot_weight_audit.json`: the certified nonzero pivot minor is weight-homogeneous, but its dominant weight is incompatible with the claimed irreducible.
+- `lemma19_claimed_weight_raising_audit.json`: a different nonzero maximal minor has the claimed torus weight, but nonzero raising derivatives show it is not itself a highest-weight vector.
+- `lemma19_89_minor_weight_audit.json`: a certified nonzero $89\times89$ minor is not a weight of any of the 15 certified degree-89 predecessor modules.
+
+Thus the nonvanishing computation is real, but the printed representation membership statements cannot be accepted literally.
+
 ## Minimality certificate
 
 The fifteen candidate degree-89 partitions and all relevant multiplicity-space maps must be serialized explicitly. The phrase "none of their embeddings" is not a certificate until the basis of every embedding space and the membership test are specified.

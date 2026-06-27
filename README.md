@@ -5,7 +5,7 @@
 
 This repository reconstructs and independently audits the counterexample claimed in Kyungyong Lee, *The singularities of the principal component of the Hilbert scheme of points*, Journal of Algebra 324 (2010), 1347-1363, DOI: 10.1016/j.jalgebra.2010.07.001.
 
-> **Current verdict: open audit.** The paper's conclusion has not yet been independently certified here. One part of Lemma 19 is now certified: a reconstructed maximal minor is nonzero. Schur-module membership and degree-90 minimality remain open.
+> **Current verdict: open audit.** The paper's conclusion has not yet been independently certified here. The reconstructed maximal minor is nonzero, but two literal representation-theoretic sentences in Lemma 19 are now refuted. The possible rescue route is a different linear combination or isotypic projection, which remains open.
 
 The target claim is that the principal component of \(\operatorname{Hilb}^9(\mathbb C^8)\) is not locally Cohen-Macaulay at \(\mathfrak m^2\), hence Haiman's stated Cohen-Macaulay conjecture fails for \(d\ge 8\), \(n\ge 9\).
 
@@ -29,6 +29,19 @@ A recorded `90 x 90` pivot minor has determinant `970351` modulo the prime
 `1000003`. This proves that the selected integer determinant polynomial is
 nonzero in characteristic zero. It does **not** yet prove that it is a minimal
 generator of `J_8`.
+
+The representation audit has also produced two negative certificates:
+
+- the certified nonzero pivot minor has dominant weight beginning with `141`, so
+  it cannot lie in the claimed irreducible whose highest weight begins with
+  `133`;
+- deleting one row and one column gives a certified nonzero `89 x 89` minor
+  with dominant weight beginning with `140`, while all 15 degree-89 predecessor
+  candidates begin at most with `132`.
+
+A separate nonzero `90 x 90` minor has the claimed torus weight, but it is not
+itself a highest-weight vector: five tested simple raising derivatives are
+nonzero modulo `1000003`.
 
 ## Repository map
 

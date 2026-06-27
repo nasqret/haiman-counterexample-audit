@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-06-27T05:31:30+02:00",
+  "updated_at": "2026-06-27T06:07:56+02:00",
   "project": "haiman-counterexample-audit",
   "verdict": "open_audit",
   "source": {
@@ -17,9 +17,9 @@
     "matrix_factorization": "cross_checked_sage_magma_singular_oscar_rust",
     "nonzero_maximal_minor": "certified_five_language_agreement",
     "ideal_membership": "proved_dense_kernel_argument",
-    "schur_membership": "literal_any_minor_claim_refuted_required_constituent_still_open",
+    "schur_membership": "literal_any_minor_claim_refuted_weight_compatible_minor_not_highest_required_constituent_still_open",
     "degree_89_predecessor_enumeration": "certified_sage_rust",
-    "degree_89_exclusion": "pending",
+    "degree_89_exclusion": "literal_all_89_minors_claim_refuted_embedding_exclusion_still_pending",
     "cohen_macaulay_conclusion": "pending"
   },
   "environments": {
@@ -44,8 +44,21 @@
     "matrix_payload_sha256": "dc4bb49eaab862c6f11ce83b9129fd9c16adc6b6d4e591fc4be8ea972d9176ac",
     "prime": 1000003,
     "rank": 90,
-    "determinant_mod_prime": 970351
-    ,"predecessor_payload_sha256": "57e87fae955efedd5211eab5fed48e154a2df1266b9414670a4f4def689e3c40",
+    "determinant_mod_prime": 970351,
+    "pivot_minor_weight": [60, 60, 60, 141, 125, 128, 120, 116],
+    "claimed_weight_minor_determinant_mod_prime": 300834,
+    "claimed_weight_minor_is_highest_vector": false,
+    "nonzero_raising_derivatives_mod_prime": {
+      "E45": 685026,
+      "E56": 176188,
+      "E67": 140239,
+      "E78": 78485,
+      "E23": 605583
+    },
+    "minor_89_determinant_mod_prime": 421057,
+    "minor_89_dominant_weight": [140, 126, 123, 119, 115, 60, 59, 59],
+    "minor_89_max_predecessor_first_part": 132,
+    "predecessor_payload_sha256": "57e87fae955efedd5211eab5fed48e154a2df1266b9414670a4f4def689e3c40",
     "lr_predecessor_count": 102,
     "tensor_predecessor_count": 15
   },

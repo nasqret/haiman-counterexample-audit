@@ -11,12 +11,30 @@ python3 -m json.tool book/notebooks/matrix_counts.ipynb >/dev/null
 
 ./scripts/execute-notebooks.sh
 
-if command -v sage >/dev/null 2>&1; then
+find_sage() {
+  if command -v sage >/dev/null 2>&1 && \
+    env HOME="$ROOT/.cache/home" SAGE_HOME="$ROOT/.cache/sage" \
+      sage --version >/dev/null 2>&1; then
+    command -v sage
+    return 0
+  fi
+  local app_sage="/Applications/SageMath-10-8.app/Contents/Frameworks/Sage.framework/Versions/10.8/local/bin/sage"
+  if [[ -x "$app_sage" ]] && \
+    env HOME="$ROOT/.cache/home" SAGE_HOME="$ROOT/.cache/sage" \
+      "$app_sage" --version >/dev/null 2>&1; then
+    printf '%s\n' "$app_sage"
+    return 0
+  fi
+  return 1
+}
+
+sage_bin="$(find_sage || true)"
+if [[ -n "$sage_bin" ]]; then
   mkdir -p "$ROOT/.cache/home" "$ROOT/.cache/sage"
   env HOME="$ROOT/.cache/home" SAGE_HOME="$ROOT/.cache/sage" \
-    sage artifacts/sage/generate_matrix.sage
+    "$sage_bin" artifacts/sage/generate_matrix.sage
   env HOME="$ROOT/.cache/home" SAGE_HOME="$ROOT/.cache/sage" \
-    sage artifacts/sage/enumerate_predecessors.sage
+    "$sage_bin" artifacts/sage/enumerate_predecessors.sage
 fi
 
 if [[ -x "$ROOT/.venv/bin/python" ]]; then

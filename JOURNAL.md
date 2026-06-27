@@ -123,3 +123,26 @@ It does not close highest-weight membership or degree-89 exclusion.
 - Pages run `28277277253` built and deployed successfully.
 - Live browser QA confirmed navigation, formulas, styling, and the current
   verdict; no page-load failure was observed.
+
+## 2026-06-27 - Additional representation counter-certificates
+
+- Added `lemma19_89_minor_weight_audit.json`. It deletes row 0 and the first
+  pivot column from the certified full-rank pivot minor. The resulting
+  `89 x 89` determinant is `421057 mod 1000003`.
+- Its weight is `(60,59,59,140,123,126,119,115)`, with dominant reordering
+  `(140,126,123,119,115,60,59,59)`.
+- Every one of the 15 certified degree-89 predecessor partitions has first
+  part at most 132, so this nonzero `89 x 89` minor is not a weight of any of
+  those modules. This refutes the printed claim that each `89 x 89` minor lies
+  in one of them.
+- Added `lemma19_claimed_weight_raising_audit.json`. The previously found
+  weight-compatible `90 x 90` minor has determinant `300834 mod 1000003`, but
+  simple raising derivatives for the Borel order `(4,5,6,7,8,1,2,3)` are
+  nonzero:
+  `E45=685026`, `E56=176188`, `E67=140239`, `E78=78485`, and `E23=605583`.
+- Rust now independently recomputes the 89-minor determinant/weight and the
+  same raising-derivative residues.
+
+Boundary: these certificates refute literal sentences in Lemma 19, but they do
+not yet prove that the required Schur constituent is absent from the span of all
+maximal minors.

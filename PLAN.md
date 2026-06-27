@@ -39,14 +39,14 @@ Status values: `[ ]` pending, `[~]` in progress, `[x]` verified, `[!]` blocked o
 
 - [x] Prove maximal minors vanish on a dense subset of \(P_8\), hence lie in reduced \(J_8\).
 - [ ] Verify the rational parametrization used for membership tests.
-- [ ] Certify the weight of a selected determinant.
-- [ ] Apply/check all highest-weight raising operators.
+- [x] Certify weights of selected maximal and `89 x 89` minors.
+- [x] Apply/check simple raising operators for the selected weight-compatible determinant.
 - [ ] Establish membership in \(S_{(133,130,126,122,119,60,60,60)}W\) in characteristic zero.
 
 ## Phase 5 - Minimality
 
 - [x] Enumerate the claimed 15 partitions with reproducible LR code and independent Rust verification.
-- [ ] Record all relevant multiplicities in tensor and symmetric powers.
+- [~] Record all relevant multiplicities in tensor and symmetric powers.
 - [ ] Construct every relevant embedding in degree 89.
 - [ ] Prove/evaluate that no relevant copy lies in \(J_8\).
 - [ ] Conclude that a degree-90 generator is minimal, or locate the failure.

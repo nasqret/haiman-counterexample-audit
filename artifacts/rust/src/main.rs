@@ -446,6 +446,182 @@ fn determinant_mod(mut matrix: Vec<Vec<u64>>, prime: u64) -> Result<u64, Box<dyn
     Ok(determinant)
 }
 
+fn determinant_and_inverse_mod(
+    matrix: Vec<Vec<u64>>,
+    prime: u64,
+) -> Result<(u64, Vec<Vec<u64>>), Box<dyn Error>> {
+    let n = matrix.len();
+    if matrix.iter().any(|row| row.len() != n) {
+        return Err("inverse matrix is not square".into());
+    }
+    let mut augmented = vec![vec![0_u64; 2 * n]; n];
+    for row in 0..n {
+        for column in 0..n {
+            augmented[row][column] = matrix[row][column] % prime;
+        }
+        augmented[row][n + row] = 1;
+    }
+
+    let mut determinant = 1;
+    for column in 0..n {
+        let pivot = (column..n)
+            .find(|row| augmented[*row][column] != 0)
+            .ok_or("singular matrix")?;
+        if pivot != column {
+            augmented.swap(pivot, column);
+            determinant = if determinant == 0 {
+                0
+            } else {
+                prime - determinant
+            };
+        }
+        let pivot_value = augmented[column][column];
+        determinant = mod_mul(determinant, pivot_value, prime);
+        let pivot_inverse = mod_pow(pivot_value, prime - 2, prime);
+        for index in 0..(2 * n) {
+            augmented[column][index] = mod_mul(augmented[column][index], pivot_inverse, prime);
+        }
+        for row in 0..n {
+            if row == column || augmented[row][column] == 0 {
+                continue;
+            }
+            let factor = augmented[row][column];
+            for index in 0..(2 * n) {
+                let reduction = mod_mul(factor, augmented[column][index], prime);
+                augmented[row][index] = mod_sub(augmented[row][index], reduction, prime);
+            }
+        }
+    }
+
+    let inverse = augmented.into_iter().map(|row| row[n..].to_vec()).collect();
+    Ok((determinant, inverse))
+}
+
+fn submatrix(
+    matrix: &[Vec<u64>],
+    selected_rows: &[usize],
+    selected_columns: &[usize],
+) -> Vec<Vec<u64>> {
+    selected_rows
+        .iter()
+        .map(|row| {
+            selected_columns
+                .iter()
+                .map(|column| matrix[*row][*column])
+                .collect()
+        })
+        .collect()
+}
+
+fn selected_minor_weight(
+    rows: &[Row],
+    columns: &[Coord],
+    selected_rows: &[usize],
+    selected_columns: &[usize],
+) -> [i64; 8] {
+    let row_weight_sum = selected_rows
+        .iter()
+        .map(|row| relation_weight(rows[*row]))
+        .fold([0_i64; 8], weight_add);
+    let column_weight_sum = selected_columns
+        .iter()
+        .map(|column| variable_weight(columns[*column]))
+        .fold([0_i64; 8], weight_add);
+    weight_subtract(row_weight_sum, column_weight_sum)
+}
+
+fn signed_mod(value: i64, prime: u64) -> u64 {
+    if value >= 0 {
+        (value as u64) % prime
+    } else {
+        let positive = ((-value) as u64) % prime;
+        if positive == 0 {
+            0
+        } else {
+            prime - positive
+        }
+    }
+}
+
+fn variable_action(
+    [r, s, t]: Coord,
+    (u, v): (u8, u8),
+    variable_set: &BTreeSet<Coord>,
+) -> Vec<(Coord, i64)> {
+    let mut terms = BTreeMap::<Coord, i64>::new();
+    let mut add_term = |target: Coord, coefficient: i64| {
+        let canonical = coord(target[0], target[1], target[2]);
+        if !variable_set.contains(&canonical) {
+            return;
+        }
+        let value = terms.get(&canonical).copied().unwrap_or(0) + coefficient;
+        if value == 0 {
+            terms.remove(&canonical);
+        } else {
+            terms.insert(canonical, value);
+        }
+    };
+    if r == u {
+        add_term([v, s, t], -1);
+    }
+    if s == v {
+        add_term([r, u, t], 1);
+    }
+    if t == v {
+        add_term([r, s, u], 1);
+    }
+    terms.into_iter().collect()
+}
+
+fn trace_product_mod(left: &[Vec<u64>], right: &[Vec<u64>], prime: u64) -> u64 {
+    let n = left.len();
+    let mut total = 0;
+    for i in 0..n {
+        for k in 0..n {
+            total = (total + mod_mul(left[i][k], right[k][i], prime)) % prime;
+        }
+    }
+    total
+}
+
+fn derivative_value_mod(
+    entries: &BTreeMap<EntryKey, (i32, Coord)>,
+    variables: &BTreeSet<Coord>,
+    assignments: &BTreeMap<Coord, u64>,
+    selected_columns: &[usize],
+    root: (u8, u8),
+    determinant: u64,
+    inverse: &[Vec<u64>],
+    prime: u64,
+) -> u64 {
+    let column_index: BTreeMap<usize, usize> = selected_columns
+        .iter()
+        .copied()
+        .enumerate()
+        .map(|(index, column)| (column, index))
+        .collect();
+    let mut derivative = vec![vec![0_u64; selected_columns.len()]; 90];
+    for (key, (sign, variable)) in entries {
+        let Some(column) = column_index.get(&key.column) else {
+            continue;
+        };
+        let mut value = 0;
+        for (target, coefficient) in variable_action(*variable, root, variables) {
+            let term = mod_mul(signed_mod(coefficient, prime), assignments[&target], prime);
+            value = (value + term) % prime;
+        }
+        if *sign < 0 && value != 0 {
+            value = prime - value;
+        }
+        derivative[key.row][*column] = value;
+    }
+    mod_mul(
+        determinant,
+        trace_product_mod(inverse, &derivative, prime),
+        prime,
+    )
+}
+
 fn partition_sum(partition: &[i64; 8]) -> i64 {
     partition.iter().sum()
 }
@@ -559,7 +735,7 @@ fn weak_compositions_9_into_8() -> Vec<[i64; 8]> {
 
 fn verify_predecessor_certificate(
     certificate_path: &Path,
-) -> Result<(usize, usize, String), Box<dyn Error>> {
+) -> Result<(usize, usize, String, i64), Box<dyn Error>> {
     let text = fs::read_to_string(certificate_path)?;
     let raw: Value = serde_json::from_str(&text)?;
     let certificate: PredecessorCertificate = serde_json::from_str(&text)?;
@@ -596,7 +772,9 @@ fn verify_predecessor_certificate(
     }
 
     let mut recorded_lambdas = BTreeSet::new();
+    let mut max_predecessor_first_part = 0;
     for candidate in &certificate.tensor_candidates {
+        max_predecessor_first_part = max_predecessor_first_part.max(candidate.lambda[0]);
         if !recorded_lambdas.insert(candidate.lambda) {
             return Err("duplicate predecessor partition".into());
         }
@@ -664,7 +842,12 @@ fn verify_predecessor_certificate(
         .into());
     }
 
-    Ok((all_lr_candidates.len(), all_tensor_candidates.len(), digest))
+    Ok((
+        all_lr_candidates.len(),
+        all_tensor_candidates.len(),
+        digest,
+        max_predecessor_first_part,
+    ))
 }
 
 fn parse_paths() -> Result<(PathBuf, PathBuf, PathBuf), Box<dyn Error>> {
@@ -840,6 +1023,15 @@ fn main() -> Result<(), Box<dyn Error>> {
         )
         .into());
     }
+    let minor_89_rows: Vec<usize> = (1..90).collect();
+    let minor_89_columns: Vec<usize> = certificate.pivot_columns.iter().copied().skip(1).collect();
+    let minor_89 = submatrix(&specialized, &minor_89_rows, &minor_89_columns);
+    let determinant_89 = determinant_mod(minor_89, certificate.prime)?;
+    let minor_89_weight = selected_minor_weight(&rows, &columns, &minor_89_rows, &minor_89_columns);
+    let minor_89_dominant_weight = dominant_reordering(minor_89_weight);
+    if determinant_89 != 421_057 || minor_89_weight != [60, 59, 59, 140, 123, 126, 119, 115] {
+        return Err("89-minor audit mismatch".into());
+    }
     let claimed_column_weight_sum = certificate
         .claimed_weight_candidate
         .columns
@@ -863,14 +1055,56 @@ fn main() -> Result<(), Box<dyn Error>> {
                 .collect()
         })
         .collect();
-    let claimed_determinant = determinant_mod(claimed_minor, certificate.prime)?;
+    let (claimed_determinant, claimed_inverse) =
+        determinant_and_inverse_mod(claimed_minor, certificate.prime)?;
     if claimed_determinant != certificate.claimed_weight_candidate.determinant_mod_prime
         || claimed_determinant == 0
     {
         return Err("claimed-weight determinant mismatch".into());
     }
-    let (lr_candidate_count, tensor_candidate_count, predecessor_digest) =
-        verify_predecessor_certificate(&predecessors_path)?;
+    let variable_set: BTreeSet<Coord> = variables.iter().copied().collect();
+    let tested_simple_roots = [
+        (4_u8, 5_u8),
+        (5_u8, 6_u8),
+        (6_u8, 7_u8),
+        (7_u8, 8_u8),
+        (8_u8, 1_u8),
+        (1_u8, 2_u8),
+        (2_u8, 3_u8),
+    ];
+    let raising_values: Vec<u64> = tested_simple_roots
+        .iter()
+        .map(|root| {
+            derivative_value_mod(
+                &entries,
+                &variable_set,
+                &assignments,
+                &certificate.claimed_weight_candidate.columns,
+                *root,
+                claimed_determinant,
+                &claimed_inverse,
+                certificate.prime,
+            )
+        })
+        .collect();
+    let expected_raising_values = [685_026, 176_188, 140_239, 78_485, 0, 0, 605_583];
+    if raising_values != expected_raising_values {
+        return Err(format!("raising derivative mismatch: {raising_values:?}").into());
+    }
+    let raising_records: Vec<Value> = tested_simple_roots
+        .iter()
+        .zip(raising_values.iter())
+        .map(|((u, v), value)| json!({"root": [u, v], "derivative_mod_prime": value}))
+        .collect();
+    let (
+        lr_candidate_count,
+        tensor_candidate_count,
+        predecessor_digest,
+        max_predecessor_first_part,
+    ) = verify_predecessor_certificate(&predecessors_path)?;
+    if minor_89_dominant_weight[0] <= max_predecessor_first_part {
+        return Err("89-minor dominance obstruction failed".into());
+    }
 
     println!(
         "{}",
@@ -890,6 +1124,12 @@ fn main() -> Result<(), Box<dyn Error>> {
             "claimed_weight_candidate": claimed_candidate_weight,
             "claimed_weight_candidate_determinant_mod_prime": claimed_determinant,
             "claimed_weight_candidate_boundary": "weight compatibility is necessary, not a proof of pure Schur-module membership",
+            "minor_89_determinant_mod_prime": determinant_89,
+            "minor_89_weight": minor_89_weight,
+            "minor_89_dominant_reordering": minor_89_dominant_weight,
+            "minor_89_max_predecessor_first_part": max_predecessor_first_part,
+            "claimed_weight_raising_derivatives": raising_records,
+            "claimed_weight_candidate_highest_vector": false,
             "implication": "the selected integer maximal-minor polynomial is nonzero in characteristic zero"
         })
     );

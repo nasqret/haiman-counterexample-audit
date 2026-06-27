@@ -9,9 +9,11 @@
 | Nonzero maximal minor | certified | `lemma19_nonzero_minor.json` + five implementations | det = 970351 mod 1000003 |
 | Maximal minors in \(J_8\) | proved | dense-kernel argument + standard simplex witness | yes |
 | Literal "any minor in claimed Schur module" | refuted | `lemma19_pivot_weight_audit.json` + Rust | incompatible nonzero weight |
-| Required Schur constituent exists in minors | pending | highest-weight/isotypic certificate | weight-compatible minor only |
+| Weight-compatible maximal minor is highest | refuted for selected minor | `lemma19_claimed_weight_raising_audit.json` + Rust | nonzero raising derivatives |
+| Required Schur constituent exists in minors | pending | highest-weight/isotypic certificate | projection or linear combination still open |
 | Fifteen predecessor partitions | certified | Sage LR chains + Rust tableau verifier | 102 LR; 15 tensor |
-| Degree-89 exclusion | pending | rational-evaluation certificates | - |
+| Literal "each 89 x 89 minor in a predecessor module" | refuted | `lemma19_89_minor_weight_audit.json` + Rust | incompatible nonzero weight |
+| Degree-89 embedding exclusion | pending | rational-evaluation certificates | - |
 | Proposition 6 codimension | pending | independent CAS computation | - |
 | Theorem A | pending | final audit | - |
 

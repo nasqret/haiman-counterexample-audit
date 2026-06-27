@@ -12,7 +12,7 @@ The decisive computation was not published. On pp. 1358-1359, Lemma 19 replaces 
 
 :::{admonition} Current verdict
 :class: warning
-**Open audit.** The source and the missing obligations have been identified, but the counterexample is not yet independently certified by this project.
+**Open audit.** The source and missing code have been reconstructed far enough to certify nonvanishing and refute two literal Lemma 19 representation claims. The counterexample itself is not yet independently certified or refuted.
 :::
 
 ## What counts as a successful verification?
