@@ -9,6 +9,7 @@ output/
 *.log
 *.aux
 *.out
+!results/cluster/*.out
 *.toc
 
 # Language/tool caches

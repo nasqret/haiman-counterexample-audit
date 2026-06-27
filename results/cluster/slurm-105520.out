@@ -1,0 +1,6 @@
+host=c2n2.cluster.wmi.amu.edu.pl
+job_id=105520
+Python 3.10.12
+{"determinant_mod_prime": 970351, "implementation": "Python-stdlib-WMI", "matrix_payload_sha256": "dc4bb49eaab862c6f11ce83b9129fd9c16adc6b6d4e591fc4be8ea972d9176ac", "nonzero_entries": 1410, "prime": 1000003, "rank": 90, "shape": [90, 115], "status": "verified", "translation_residual_zero": true}
+8bf65e912de8fa40766ac54a8c90323fc1c21a7b5663c0558ace1f4551942625  artifacts/common/verify_specialization.py
+30fd30f657952c10aa17ee93c9f62d2dc24836c2babf56d7b4a6372ffe7da893  results/certificates/lemma19_nonzero_minor.json
