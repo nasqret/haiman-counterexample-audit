@@ -18,6 +18,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: requirements-ci.txt
       - run: pip install -r requirements-ci.txt
       - run: ./scripts/validate-book.sh
 
@@ -30,4 +31,3 @@ jobs:
         with:
           workspaces: artifacts/rust
       - run: cargo test --locked --manifest-path artifacts/rust/Cargo.toml
-
