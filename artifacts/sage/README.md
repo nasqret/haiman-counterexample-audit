@@ -7,14 +7,14 @@ Planned authoritative entrypoints:
   explicit tensor LR chains, and the compact list of degree-89
   minimality-relevant \(V=S_\lambda W\) candidates. This does not construct
   the actual copies in `Sym^89(S_mu)` or test `J_8` membership.
-- `compute_symmetric_multiplicities.sage`: in-progress exact Phase B
-  implementation. It uses Jacobi--Trudi and
+- `compute_symmetric_multiplicities.sage`: secondary exact Phase B
+  implementation route. It uses Jacobi--Trudi and
   \(\operatorname{Sym}^k(\operatorname{Sym}^2 V)=
   \bigoplus_{\lambda\vdash k} S_{2\lambda}V\) to reduce the GL5 plethysm
-  coefficients to ordinary Littlewood--Richardson products. It is not part of
-  default validation yet: on the current local machine the direct LR summation
-  did not return the first target within 90 seconds and needs further
-  pruning/caching or a cluster run.
+  coefficients to ordinary Littlewood--Richardson products. It is not the
+  accepted full-run certificate yet: the current direct LR summation did not
+  return the first target within 90 seconds locally. The accepted Phase B
+  nonvanishing certificate is currently the Rust modular weight-DP artifact.
 - `verify_certificate.sage`: certificate-only verifier.
 
 No Sage result is considered cross-checked until the Rust verifier accepts the same certificate.

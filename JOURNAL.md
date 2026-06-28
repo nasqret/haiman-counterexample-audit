@@ -264,8 +264,31 @@ aggressive pruning.
   height-3 column 11/29 for \((30,30,29)\), then was interrupted as
   too slow/high-memory.
 
-No `lemma19_symmetric_multiplicities.json` certificate has been accepted.
-Next attempt should either prune the LR summation over intermediate
-partitions \(\tau\subseteq\alpha\), replace the Rust state vectors with a
-sparse/zeta representation and target-specific reachability, or profile a
-bounded cluster run before submitting a long job.
+This first attempt did not produce an accepted certificate.  The follow-up
+optimization changed the Rust residue storage from `u64` to `u32`, which
+halved the dense DP memory footprint and made the run feasible.
+
+## 2026-06-28 - Phase B symmetric-multiplicity certificate
+
+- Re-ran `artifacts/rust/src/bin/plethysm_multiplicity.rs` with
+  `--method=dense --write` after the `u32` residue optimization.
+- Runtime was approximately 389 seconds real time.
+- Peak observed dense weight-state count:
+  - \((30,30,29)\): 1,267,465 states at height-3 column 16/29.
+  - \((30,30,30)\): 1,267,465 states at height-3 column 16/30.
+- Generated
+  `results/certificates/lemma19_symmetric_multiplicities.json`.
+- Payload SHA-256:
+  `e056448d0e488c604f7fdd5dc3d036c46b3b26c44c42a903cd4d72a75037b418`.
+- File SHA-256:
+  `35c0a002dc3f3566500ce73dd96e2e59a0a6a900f5bfc6643b5c5b8b7c15d164`.
+- Status: `all_target_multiplicities_nonzero_mod_prime`.
+- All 15 degree-89 candidates and the degree-90 target have nonzero residues
+  modulo \(1000000007\), hence nonzero integer multiplicities.
+- Added small Rust regression tests against Sage-known plethysms:
+  \(s_{(1,1,1)}[s_{(2)}]=s_{(3,3)}+s_{(4,1,1)}\), plus selected
+  \(s_{(2,2,1)}[s_{(2)}]\) coefficients.
+
+Boundary: this proves occurrence in the relevant symmetric powers.  It does
+not construct explicit highest-weight vectors in the determinant/cofactor
+span and does not test \(J_8\)-membership.  Phase C remains the next gate.

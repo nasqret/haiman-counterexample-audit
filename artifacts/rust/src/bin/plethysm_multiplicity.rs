@@ -10,10 +10,11 @@ use std::path::{Path, PathBuf};
 const N: usize = 5;
 const ALPHABET: usize = 15;
 const GRID: usize = ALPHABET * ALPHABET * ALPHABET;
-const MODULUS: u64 = 1_000_000_007;
+const MODULUS: ModInt = 1_000_000_007;
 
 type Weight = [u8; N];
 type Key4 = [u8; 4];
+type ModInt = u32;
 
 #[derive(Clone, Debug)]
 struct Column3 {
@@ -42,21 +43,27 @@ struct Target {
     shape: Shape,
 }
 
+#[derive(Clone, Copy, Debug)]
+enum DpMethod {
+    DenseByWeight,
+    SparseByColumn,
+}
+
 #[derive(Debug, Serialize)]
 struct MultiplicityRecord {
     label: String,
     alpha: Vec<u8>,
     gl3_partition_pi: Vec<u8>,
-    modulus: u64,
+    modulus: ModInt,
     shifted_weight_terms: usize,
-    schur_multiplicity_mod_prime: u64,
+    schur_multiplicity_mod_prime: ModInt,
     certified_nonzero_over_integers: bool,
 }
 
 #[derive(Debug, Serialize)]
 struct ShapeRunRecord {
     gl3_partition_pi: Vec<u8>,
-    modulus: u64,
+    modulus: ModInt,
     target_weights: usize,
     states_after_height3_columns: usize,
     height3_columns: usize,
@@ -68,7 +75,8 @@ struct Payload {
     schema_version: u64,
     source: String,
     status: String,
-    modulus: u64,
+    modulus: ModInt,
+    dp_method: String,
     method: String,
     character_formula: String,
     shape_runs: Vec<ShapeRunRecord>,
@@ -87,16 +95,16 @@ fn grid_index(a: usize, b: usize, c: usize) -> usize {
     (a * ALPHABET + b) * ALPHABET + c
 }
 
-fn add_mod(left: u64, right: u64) -> u64 {
-    let sum = left + right;
-    if sum >= MODULUS {
-        sum - MODULUS
+fn add_mod(left: ModInt, right: ModInt) -> ModInt {
+    let sum = left as u64 + right as u64;
+    if sum >= MODULUS as u64 {
+        (sum - MODULUS as u64) as ModInt
     } else {
-        sum
+        sum as ModInt
     }
 }
 
-fn sub_mod(left: u64, right: u64) -> u64 {
+fn sub_mod(left: ModInt, right: ModInt) -> ModInt {
     if left >= right {
         left - right
     } else {
@@ -142,7 +150,7 @@ fn within_bounds(
     total_degree: usize,
     min_target: &Weight,
     max_target: &Weight,
-    future_degree: usize,
+    future_coordinate_max: usize,
 ) -> bool {
     let Some(weight) = key4_to_weight(key, total_degree) else {
         return false;
@@ -152,7 +160,7 @@ fn within_bounds(
         if value > max_target[index] as usize {
             return false;
         }
-        if value + future_degree < min_target[index] as usize {
+        if value + future_coordinate_max < min_target[index] as usize {
             return false;
         }
     }
@@ -206,7 +214,7 @@ fn build_columns2(alphabet: &[Weight]) -> Vec<Column2> {
     columns
 }
 
-fn prefix3(grid: &mut [u64]) {
+fn prefix3(grid: &mut [ModInt]) {
     for a in 1..ALPHABET {
         for b in 0..ALPHABET {
             for c in 0..ALPHABET {
@@ -236,24 +244,128 @@ fn prefix3(grid: &mut [u64]) {
     }
 }
 
-fn update_cell(vector: &mut [u64], index: usize, value: u64) {
+fn update_cell(vector: &mut [ModInt], index: usize, value: ModInt) {
     vector[index] = add_mod(vector[index], value);
 }
 
-fn step_height3(
-    state: HashMap<Key4, Vec<u64>>,
+fn add_to_map(map: &mut HashMap<Key4, ModInt>, key: Key4, value: ModInt) {
+    let entry = map.entry(key).or_insert(0);
+    *entry = add_mod(*entry, value);
+}
+
+fn merge_map_into(source: &HashMap<Key4, ModInt>, target: &mut HashMap<Key4, ModInt>) {
+    for (key, value) in source {
+        add_to_map(target, *key, *value);
+    }
+}
+
+fn aggregate_sparse_entries(state: &[HashMap<Key4, ModInt>]) -> usize {
+    state.iter().map(HashMap::len).sum()
+}
+
+fn prefix_sparse_state(state: &[HashMap<Key4, ModInt>]) -> Vec<HashMap<Key4, ModInt>> {
+    let mut prefix = state.to_vec();
+    for a in 1..ALPHABET {
+        for b in 0..ALPHABET {
+            for c in 0..ALPHABET {
+                let previous = prefix[grid_index(a - 1, b, c)].clone();
+                let target = &mut prefix[grid_index(a, b, c)];
+                merge_map_into(&previous, target);
+            }
+        }
+    }
+    for a in 0..ALPHABET {
+        for b in 1..ALPHABET {
+            for c in 0..ALPHABET {
+                let previous = prefix[grid_index(a, b - 1, c)].clone();
+                let target = &mut prefix[grid_index(a, b, c)];
+                merge_map_into(&previous, target);
+            }
+        }
+    }
+    for a in 0..ALPHABET {
+        for b in 0..ALPHABET {
+            for c in 1..ALPHABET {
+                let previous = prefix[grid_index(a, b, c - 1)].clone();
+                let target = &mut prefix[grid_index(a, b, c)];
+                merge_map_into(&previous, target);
+            }
+        }
+    }
+    prefix
+}
+
+fn initialize_height3_sparse(
+    columns3: &[Column3],
+    shape: &Shape,
+    min_target: &Weight,
+    max_target: &Weight,
+) -> Vec<HashMap<Key4, ModInt>> {
+    let mut state = vec![HashMap::new(); GRID];
+    let final_height2_degree = if shape.has_final_height2_column { 4 } else { 0 };
+    let future_coordinate_max =
+        4 * (shape.height3_columns - 1) + if final_height2_degree == 0 { 0 } else { 3 };
+    for column in columns3 {
+        if !within_bounds(&column.key4, 6, min_target, max_target, future_coordinate_max) {
+            continue;
+        }
+        add_to_map(&mut state[column.grid_index], column.key4, 1);
+    }
+    state
+}
+
+fn step_height3_sparse(
+    state: Vec<HashMap<Key4, ModInt>>,
     columns3: &[Column3],
     completed_height3_columns: usize,
     shape: &Shape,
     min_target: &Weight,
     max_target: &Weight,
-) -> HashMap<Key4, Vec<u64>> {
+) -> Vec<HashMap<Key4, ModInt>> {
     let total_degree = 6 * completed_height3_columns;
     let remaining_height3 = shape.height3_columns - completed_height3_columns;
     let final_height2_degree = if shape.has_final_height2_column { 4 } else { 0 };
-    let future_degree = 6 * remaining_height3 + final_height2_degree;
-    let mut next: HashMap<Key4, Vec<u64>> = HashMap::new();
-    let mut grid = vec![0u64; GRID];
+    let future_coordinate_max =
+        4 * remaining_height3 + if final_height2_degree == 0 { 0 } else { 3 };
+    let prefix = prefix_sparse_state(&state);
+    let mut next = vec![HashMap::new(); GRID];
+    for column in columns3 {
+        let source = &prefix[column.grid_index];
+        if source.is_empty() {
+            continue;
+        }
+        let target = &mut next[column.grid_index];
+        for (key, value) in source {
+            let next_key = key4_add(key, &column.key4);
+            if within_bounds(
+                &next_key,
+                total_degree,
+                min_target,
+                max_target,
+                future_coordinate_max,
+            ) {
+                add_to_map(target, next_key, *value);
+            }
+        }
+    }
+    next
+}
+
+fn step_height3(
+    state: HashMap<Key4, Vec<ModInt>>,
+    columns3: &[Column3],
+    completed_height3_columns: usize,
+    shape: &Shape,
+    min_target: &Weight,
+    max_target: &Weight,
+) -> HashMap<Key4, Vec<ModInt>> {
+    let total_degree = 6 * completed_height3_columns;
+    let remaining_height3 = shape.height3_columns - completed_height3_columns;
+    let final_height2_degree = if shape.has_final_height2_column { 4 } else { 0 };
+    let future_coordinate_max = 4 * remaining_height3
+        + if final_height2_degree == 0 { 0 } else { 3 };
+    let mut next: HashMap<Key4, Vec<ModInt>> = HashMap::new();
+    let mut grid = vec![0 as ModInt; GRID];
 
     for (key, vector) in state {
         grid.fill(0);
@@ -274,13 +386,13 @@ fn step_height3(
                 total_degree,
                 min_target,
                 max_target,
-                future_degree,
+                future_coordinate_max,
             ) {
                 continue;
             }
             let entry = next
                 .entry(next_key)
-                .or_insert_with(|| vec![0u64; columns3.len()]);
+                .or_insert_with(|| vec![0 as ModInt; columns3.len()]);
             update_cell(entry, next_index, value);
         }
     }
@@ -292,17 +404,18 @@ fn initialize_height3(
     shape: &Shape,
     min_target: &Weight,
     max_target: &Weight,
-) -> HashMap<Key4, Vec<u64>> {
-    let mut state: HashMap<Key4, Vec<u64>> = HashMap::new();
+) -> HashMap<Key4, Vec<ModInt>> {
+    let mut state: HashMap<Key4, Vec<ModInt>> = HashMap::new();
     let final_height2_degree = if shape.has_final_height2_column { 4 } else { 0 };
-    let future_degree = 6 * (shape.height3_columns - 1) + final_height2_degree;
+    let future_coordinate_max = 4 * (shape.height3_columns - 1)
+        + if final_height2_degree == 0 { 0 } else { 3 };
     for (index, column) in columns3.iter().enumerate() {
-        if !within_bounds(&column.key4, 6, min_target, max_target, future_degree) {
+        if !within_bounds(&column.key4, 6, min_target, max_target, future_coordinate_max) {
             continue;
         }
         let entry = state
             .entry(column.key4)
-            .or_insert_with(|| vec![0u64; columns3.len()]);
+            .or_insert_with(|| vec![0 as ModInt; columns3.len()]);
         update_cell(entry, index, 1);
     }
     state
@@ -320,12 +433,12 @@ fn target_bounds(targets: &BTreeSet<Weight>) -> (Weight, Weight) {
     (min_target, max_target)
 }
 
-fn compute_weight_multiplicities(
+fn compute_weight_multiplicities_dense(
     shape: &Shape,
     targets: &BTreeSet<Weight>,
     columns3: &[Column3],
     columns2: &[Column2],
-) -> (BTreeMap<Weight, u64>, ShapeRunRecord) {
+) -> (BTreeMap<Weight, ModInt>, ShapeRunRecord) {
     let (min_target, max_target) = target_bounds(targets);
     let mut state = initialize_height3(columns3, shape, &min_target, &max_target);
 
@@ -339,7 +452,7 @@ fn compute_weight_multiplicities(
             &max_target,
         );
         eprintln!(
-            "pi={:?}: completed height-3 column {}/{}; weight states={}",
+            "pi={:?}: completed height-3 column {}/{}; dense weight states={}",
             shape.pi,
             completed,
             shape.height3_columns,
@@ -351,7 +464,7 @@ fn compute_weight_multiplicities(
     if shape.has_final_height2_column {
         let total_degree = 6 * shape.height3_columns + 4;
         let target_lookup: HashSet<Weight> = targets.iter().copied().collect();
-        let mut grid = vec![0u64; GRID];
+        let mut grid = vec![0 as ModInt; GRID];
         for (key, vector) in state.iter() {
             grid.fill(0);
             for (index, value) in vector.iter().copied().enumerate() {
@@ -382,7 +495,7 @@ fn compute_weight_multiplicities(
                 continue;
             };
             if targets.contains(&weight) {
-                let mut value = 0u64;
+                let mut value = 0 as ModInt;
                 for cell in vector {
                     value = add_mod(value, *cell);
                 }
@@ -400,6 +513,94 @@ fn compute_weight_multiplicities(
         has_final_height2_column: shape.has_final_height2_column,
     };
     (multiplicities, run)
+}
+
+fn compute_weight_multiplicities_sparse(
+    shape: &Shape,
+    targets: &BTreeSet<Weight>,
+    columns3: &[Column3],
+    columns2: &[Column2],
+) -> (BTreeMap<Weight, ModInt>, ShapeRunRecord) {
+    let (min_target, max_target) = target_bounds(targets);
+    let mut state = initialize_height3_sparse(columns3, shape, &min_target, &max_target);
+
+    for completed in 2..=shape.height3_columns {
+        state = step_height3_sparse(
+            state,
+            columns3,
+            completed,
+            shape,
+            &min_target,
+            &max_target,
+        );
+        eprintln!(
+            "pi={:?}: completed height-3 column {}/{}; sparse entries={}",
+            shape.pi,
+            completed,
+            shape.height3_columns,
+            aggregate_sparse_entries(&state)
+        );
+    }
+
+    let mut multiplicities = BTreeMap::new();
+    if shape.has_final_height2_column {
+        let total_degree = 6 * shape.height3_columns + 4;
+        let target_lookup: HashSet<Weight> = targets.iter().copied().collect();
+        let prefix = prefix_sparse_state(&state);
+        for column in columns2 {
+            let source = &prefix[grid_index(column.first, column.second, ALPHABET - 1)];
+            for (key, value) in source {
+                let next_key = key4_add(key, &column.key4);
+                let Some(weight) = key4_to_weight(&next_key, total_degree) else {
+                    continue;
+                };
+                if target_lookup.contains(&weight) {
+                    let entry = multiplicities.entry(weight).or_insert(0);
+                    *entry = add_mod(*entry, *value);
+                }
+            }
+        }
+    } else {
+        let total_degree = 6 * shape.height3_columns;
+        for map in state.iter() {
+            for (key, value) in map {
+                let Some(weight) = key4_to_weight(key, total_degree) else {
+                    continue;
+                };
+                if targets.contains(&weight) {
+                    let entry = multiplicities.entry(weight).or_insert(0);
+                    *entry = add_mod(*entry, *value);
+                }
+            }
+        }
+    }
+
+    let run = ShapeRunRecord {
+        gl3_partition_pi: shape.pi.iter().copied().collect(),
+        modulus: MODULUS,
+        target_weights: targets.len(),
+        states_after_height3_columns: aggregate_sparse_entries(&state),
+        height3_columns: shape.height3_columns,
+        has_final_height2_column: shape.has_final_height2_column,
+    };
+    (multiplicities, run)
+}
+
+fn compute_weight_multiplicities(
+    shape: &Shape,
+    targets: &BTreeSet<Weight>,
+    columns3: &[Column3],
+    columns2: &[Column2],
+    method: DpMethod,
+) -> (BTreeMap<Weight, ModInt>, ShapeRunRecord) {
+    match method {
+        DpMethod::DenseByWeight => {
+            compute_weight_multiplicities_dense(shape, targets, columns3, columns2)
+        }
+        DpMethod::SparseByColumn => {
+            compute_weight_multiplicities_sparse(shape, targets, columns3, columns2)
+        }
+    }
 }
 
 fn permutation_sign(permutation: &[usize; N]) -> i32 {
@@ -472,10 +673,10 @@ fn shifted_weights(alpha: Weight, permutations: &[([usize; N], i32)]) -> Vec<(We
 
 fn schur_multiplicity_mod(
     alpha: Weight,
-    weight_multiplicities: &BTreeMap<Weight, u64>,
+    weight_multiplicities: &BTreeMap<Weight, ModInt>,
     permutations: &[([usize; N], i32)],
-) -> u64 {
-    let mut value = 0u64;
+) -> ModInt {
+    let mut value = 0 as ModInt;
     for (weight, sign) in shifted_weights(alpha, permutations) {
         let term = weight_multiplicities.get(&weight).copied().unwrap_or(0);
         if sign > 0 {
@@ -579,9 +780,29 @@ fn default_output_path() -> PathBuf {
     PathBuf::from("results/certificates/lemma19_symmetric_multiplicities.json")
 }
 
+fn parse_method(args: &[String]) -> Result<DpMethod, Box<dyn Error>> {
+    for arg in args {
+        if arg == "--method=sparse" {
+            return Ok(DpMethod::SparseByColumn);
+        }
+        if arg == "--method=dense" {
+            return Ok(DpMethod::DenseByWeight);
+        }
+    }
+    Ok(DpMethod::DenseByWeight)
+}
+
+fn method_label(method: DpMethod) -> &'static str {
+    match method {
+        DpMethod::DenseByWeight => "dense_by_weight",
+        DpMethod::SparseByColumn => "sparse_by_column",
+    }
+}
+
 fn main() -> Result<(), Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
     let write_output = args.iter().any(|arg| arg == "--write");
+    let method = parse_method(&args)?;
     let targets_path = default_targets_path();
     let output_path = default_output_path();
     let targets = parse_targets(&targets_path)?;
@@ -610,7 +831,13 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
         }
         let (weight_multiplicities, shape_run) =
-            compute_weight_multiplicities(&shape, &shifted_target_set, &columns3, &columns2);
+            compute_weight_multiplicities(
+                &shape,
+                &shifted_target_set,
+                &columns3,
+                &columns2,
+                method,
+            );
         shape_runs.push(shape_run);
 
         for target in shape_targets {
@@ -645,6 +872,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
         .to_string(),
         modulus: MODULUS,
+        dp_method: method_label(method).to_string(),
         method: "Semistandard-column dynamic programming for the weights of s_pi(Sym^2 V), followed by Weyl-character multiplicity extraction.".to_string(),
         character_formula: "multiplicity(alpha)=sum_{sigma in S_5} sign(sigma) weight_multiplicity(alpha+rho-sigma(rho)), rho=(4,3,2,1,0)".to_string(),
         shape_runs,
@@ -666,4 +894,52 @@ fn main() -> Result<(), Box<dyn Error>> {
         print!("{rendered}");
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn coefficient_mod(pi: [u8; 3], alpha: Weight) -> ModInt {
+        let alphabet = alphabet_weights();
+        let columns3 = build_columns3(&alphabet);
+        let columns2 = build_columns2(&alphabet);
+        let permutations = permutations5();
+        let shape = Shape {
+            pi,
+            height3_columns: pi[2] as usize,
+            has_final_height2_column: pi[1] > pi[2],
+        };
+        let targets = shifted_weights(alpha, &permutations)
+            .into_iter()
+            .map(|(weight, _sign)| weight)
+            .collect::<BTreeSet<_>>();
+        let (weight_multiplicities, _run) = compute_weight_multiplicities(
+            &shape,
+            &targets,
+            &columns3,
+            &columns2,
+            DpMethod::DenseByWeight,
+        );
+        schur_multiplicity_mod(alpha, &weight_multiplicities, &permutations)
+    }
+
+    #[test]
+    fn exterior_cube_of_symmetric_square_examples() {
+        // Sage check:
+        // s[1,1,1][s[2]] = s[3,3] + s[4,1,1].
+        assert_eq!(coefficient_mod([1, 1, 1], [3, 3, 0, 0, 0]), 1);
+        assert_eq!(coefficient_mod([1, 1, 1], [4, 1, 1, 0, 0]), 1);
+        assert_eq!(coefficient_mod([1, 1, 1], [5, 1, 0, 0, 0]), 0);
+    }
+
+    #[test]
+    fn shape_221_sage_examples() {
+        // Sage check:
+        // s[2,2,1][s[2]] contains s[4,4,2] and s[7,2,1],
+        // but not s[5,5].
+        assert_eq!(coefficient_mod([2, 2, 1], [4, 4, 2, 0, 0]), 1);
+        assert_eq!(coefficient_mod([2, 2, 1], [7, 2, 1, 0, 0]), 1);
+        assert_eq!(coefficient_mod([2, 2, 1], [5, 5, 0, 0, 0]), 0);
+    }
 }

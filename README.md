@@ -59,13 +59,12 @@ open.
 
 The symmetric-power multiplicity questions have been reduced to explicit GL5
 plethysm coefficients in
-`results/certificates/lemma19_symmetric_multiplicity_targets.json`; the
-coefficient values are not yet computed. Two in-progress engines now exist:
-`artifacts/sage/compute_symmetric_multiplicities.sage` reduces the coefficients
-to exact Littlewood-Richardson sums, and
-`artifacts/rust/src/bin/plethysm_multiplicity.rs` implements a modular
-weight-DP/Weyl-formula check. Neither has produced the accepted
-`lemma19_symmetric_multiplicities.json` certificate yet.
+`results/certificates/lemma19_symmetric_multiplicity_targets.json`. The Rust
+weight-DP/Weyl-formula engine now proves that all 15 degree-89 candidates, and
+the degree-90 target, have nonzero multiplicity modulo `1000000007`; see
+`results/certificates/lemma19_symmetric_multiplicities.json`. This proves
+occurrence in the relevant symmetric powers, but it still does not construct
+the highest-weight vectors or test their `J_8` membership.
 
 ## Repository map
 

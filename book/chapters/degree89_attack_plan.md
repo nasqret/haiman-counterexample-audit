@@ -153,8 +153,8 @@ $$
 Direct Sage plethysm expansion was tested and is not the intended route: it did
 not finish promptly even for one coefficient.
 
-A sharper exact reduction is now implemented, but not yet fast enough for a
-certificate.  For \(\pi\in\{(30,30,29),(30,30,30)\}\), Jacobi--Trudi gives
+A sharper exact reduction is implemented as a secondary check.  For
+\(\pi\in\{(30,30,29),(30,30,30)\}\), Jacobi--Trudi gives
 
 $$
 s_\pi(\operatorname{Sym}^2 V)
@@ -175,11 +175,11 @@ $$
 Thus every target coefficient is an exact signed sum of ordinary
 Littlewood--Richardson product coefficients among partitions of length at most
 5.  The script `artifacts/sage/compute_symmetric_multiplicities.sage`
-implements this theorem-level reduction.  In its current direct-summation
-form, it did not return the first target within 90 seconds on the local
-machine, so it is not yet a certified result.
+implements this theorem-level reduction.  It remains a secondary
+implementation because its current direct-summation form did not return the
+first target within 90 seconds on the local machine.
 
-An independent modular Rust route is also started in
+The accepted Phase B certificate is produced by the modular Rust route
 `artifacts/rust/src/bin/plethysm_multiplicity.rs`.  It computes weight
 multiplicities of \(s_\pi(\operatorname{Sym}^2V)\) by semistandard-column
 dynamic programming and then applies
@@ -193,17 +193,17 @@ m_\alpha
 $$
 
 where \(M(\beta)\) is the target weight multiplicity.  A nonzero residue modulo
-a prime would rigorously prove \(m_\alpha>0\).  The current dense-state version
-reached about \(7\cdot10^5\) bounded states at column 11 of 29 for
-\((30,30,29)\) and was interrupted as too slow/high-memory.
+a prime rigorously proves \(m_\alpha>0\).  After changing the residue storage
+from 64-bit to 32-bit arithmetic, the dense-by-weight DP completed locally in
+about 389 seconds.  It produced
+`results/certificates/lemma19_symmetric_multiplicities.json`.
 
-The next implementation should use one of the following narrower kernels
-rather than full plethysm expansion:
-
-- a pruned LR summation over intermediate partitions \(\tau\subseteq\alpha\);
-- a sparse/zeta semistandard-column DP with target-specific reachability;
-- or a cluster run only after the local state counts and memory profile are
-bounded.
+The certificate status is
+`all_target_multiplicities_nonzero_mod_prime`: all 15 degree-89 candidates and
+the degree-90 target have nonzero residues modulo \(1000000007\).  This closes
+the occurrence gate in the symmetric powers.  It does not construct explicit
+highest-weight vectors in the minor/cofactor span and does not test
+\(J_8\)-membership.
 
 Decision gate:
 
@@ -321,9 +321,8 @@ audit.
    witnesses for the candidate minor/cofactor supports. **Done for the
    Borel-oriented degree-90 target and all 15 degree-89 candidates.**
 2. `lemma19_symmetric_multiplicities.json`: compute \(m_\lambda\) for the 15
-   candidates. The reduced GL5 target list is already stored in
-   `lemma19_symmetric_multiplicity_targets.json`; the coefficients themselves
-   remain open.
+   candidates. **Done modulo \(1000000007\), with nonzero residues for all 15
+   degree-89 candidates and the degree-90 target.**
 3. `lemma19_degree90_highest_weight_space.json`: prove the maximal-minor span
    actually contains the required \(S_\nu W\).
 4. `lemma19_degree89_highest_weight_spaces.json`: construct candidate

@@ -139,9 +139,9 @@ $$
 
 in degree 89 such that $V\otimes S_\mu W$ can contribute to $S_\nu W$ in degree 90.
 
-This should be read as a necessary candidate list, not as Lee's missing minimality certificate. Two harder steps remain open:
+This should be read as a necessary candidate list, not as Lee's missing minimality certificate. The subsequent symmetric-power occurrence gate is now certified modulo \(1000000007\): `results/certificates/lemma19_symmetric_multiplicities.json` records nonzero residues for all 15 candidates. Two harder steps still remain open:
 
-1. construct the actual copies of those $S_\lambda W$ inside $\operatorname{Sym}^{89}(S_\mu W)$, rather than only certifying tensor-power occurrence;
+1. construct explicit highest-weight vectors for the relevant copies in the determinant/cofactor model;
 2. test those embedded copies against $J_8$, or equivalently compute their multiplication image in the $S_\nu W$-isotypic component of degree 90.
 
 Thus the nonzero $89\times89$ minor above refutes the broad wording "each minor", but it is not itself a degree-89 module that can feed the target $S_\nu W$.

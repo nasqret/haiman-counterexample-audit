@@ -37,10 +37,8 @@ Current Phase B reduction:
 - `results/certificates/lemma19_symmetric_multiplicity_targets.json` lists the
   GL5 plethysm coefficients whose values would give the symmetric-power
   multiplicities.
-- The coefficients are still open; direct Sage plethysm expansion was too slow.
-- In-progress engines:
-  `artifacts/sage/compute_symmetric_multiplicities.sage` gives an exact
-  Jacobi--Trudi/LR reduction, and
-  `artifacts/rust/src/bin/plethysm_multiplicity.rs` gives a modular
-  weight-DP/Weyl-formula route. Both currently need stronger pruning before
-  they can produce `lemma19_symmetric_multiplicities.json`.
+- `results/certificates/lemma19_symmetric_multiplicities.json` proves nonzero
+  residues modulo `1000000007` for all 15 degree-89 candidates and the
+  degree-90 target.
+- This proves symmetric-power occurrence. It does not construct the actual
+  highest-weight vectors in the minor/cofactor span and does not test \(J_8\).

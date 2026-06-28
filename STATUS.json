@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-06-28T14:53:07+02:00",
+  "updated_at": "2026-06-28T16:33:11+02:00",
   "project": "haiman-counterexample-audit",
   "verdict": "open_audit",
   "source": {
@@ -22,8 +22,9 @@
     "degree_89_minimality_candidates": "certified_tensor_lr_list_actual_symmetric_embeddings_open",
     "degree_89_attack_plan": "written_weight_supports_then_symmetric_multiplicities_then_j8_membership_then_multiplication_projection",
     "degree_89_weight_supports": "nonzero_exact_torus_weight_minor_witness_for_each_candidate_highest_weight_status_open",
-    "degree_89_symmetric_multiplicity_targets": "reduced_to_gl5_plethysm_coefficients_coefficients_not_computed",
-    "degree_89_symmetric_multiplicity_engines": "in_progress_exact_sage_lr_reduction_and_modular_rust_weight_dp_both_need_pruning_before_certificate",
+    "degree_89_symmetric_multiplicity_targets": "reduced_to_gl5_plethysm_coefficients",
+    "degree_89_symmetric_multiplicities": "certified_nonzero_mod_prime_for_all_15_candidates",
+    "degree_89_symmetric_multiplicity_engines": "rust_dense_weight_dp_completed_sage_lr_reduction_remains_secondary",
     "degree_89_exclusion": "literal_all_89_minors_claim_refuted_not_by_itself_a_nonminimality_witness_embedding_exclusion_still_pending",
     "cohen_macaulay_conclusion": "pending"
   },
@@ -67,7 +68,9 @@
     "minimality_relevant_modules_payload_sha256": "5b637f623bd05243e5f890eb0dc4324dcde3b0330ddd34aef19a0f82e7dbdbe2",
     "weight_supports_payload_sha256": "f09815d86f342add8245a5a00dd9b59b207a9fcc9e8426b63978e0463091ed92",
     "symmetric_multiplicity_targets_payload_sha256": "9dbfbd5f8b66b380352437e1d9df62f6bc706031efc3cd9e31a20b7cced0e579",
-    "symmetric_multiplicity_engine_status": "sage_lr_first_target_exceeded_90s_local_rust_dense_dp_reached_700k_states_at_column_11_of_29_interrupted",
+    "symmetric_multiplicity_engine_status": "rust_dense_dp_u32_completed_in_approximately_389_seconds_real_all_residues_nonzero_mod_1000000007",
+    "symmetric_multiplicities_payload_sha256": "e056448d0e488c604f7fdd5dc3d036c46b3b26c44c42a903cd4d72a75037b418",
+    "symmetric_multiplicities_file_sha256": "35c0a002dc3f3566500ce73dd96e2e59a0a6a900f5bfc6643b5c5b8b7c15d164",
     "degree_89_exact_weight_witness_count": 15,
     "lr_predecessor_count": 102,
     "tensor_predecessor_count": 15,
@@ -78,10 +81,10 @@
     "attack_plan": "book/chapters/degree89_attack_plan.md",
     "completed_certificates": [
       "results/certificates/lemma19_weight_supports.json",
-      "results/certificates/lemma19_symmetric_multiplicity_targets.json"
+      "results/certificates/lemma19_symmetric_multiplicity_targets.json",
+      "results/certificates/lemma19_symmetric_multiplicities.json"
     ],
     "planned_certificates": [
-      "results/certificates/lemma19_symmetric_multiplicities.json",
       "results/certificates/lemma19_degree90_highest_weight_space.json",
       "results/certificates/lemma19_degree89_highest_weight_spaces.json",
       "results/certificates/lemma19_degree89_j8_membership.json",

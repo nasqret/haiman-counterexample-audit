@@ -10,13 +10,16 @@ This crate is the small trusted verifier. It will:
 
 The verifier does not depend on Sage, Magma, Singular, Julia, or network access.
 
-Additional experimental binary:
+Additional Phase B binary:
 
-- `plethysm_multiplicity`: in-progress modular Phase B implementation for the
+- `plethysm_multiplicity`: modular Phase B implementation for the
   GL5 coefficients listed in
   `results/certificates/lemma19_symmetric_multiplicity_targets.json`. It uses
   semistandard-column dynamic programming plus the Weyl character formula.
-  Nonzero residues would rigorously certify nonzero integer multiplicities,
-  but the current dense-state version is not in default validation: on the
-  local machine it reached about 700k bounded weight states at column 11 of 29
-  for \((30,30,29)\) and was interrupted as too slow/high-memory.
+  The dense-by-weight implementation, after switching residues from `u64` to
+  `u32`, produced
+  `results/certificates/lemma19_symmetric_multiplicities.json` locally in about
+  389 seconds. All target residues are nonzero modulo `1000000007`, which
+  certifies nonzero integer multiplicities. This long computation is not part
+  of default validation; validation checks the stored JSON and the small
+  built-in plethysm regression tests.

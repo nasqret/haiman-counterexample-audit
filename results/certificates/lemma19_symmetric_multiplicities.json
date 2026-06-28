@@ -1,0 +1,346 @@
+{
+  "payload_sha256": "e056448d0e488c604f7fdd5dc3d036c46b3b26c44c42a903cd4d72a75037b418",
+  "schema_version": 1,
+  "source": "artifacts/rust/src/bin/plethysm_multiplicity.rs",
+  "status": "all_target_multiplicities_nonzero_mod_prime",
+  "modulus": 1000000007,
+  "dp_method": "dense_by_weight",
+  "method": "Semistandard-column dynamic programming for the weights of s_pi(Sym^2 V), followed by Weyl-character multiplicity extraction.",
+  "character_formula": "multiplicity(alpha)=sum_{sigma in S_5} sign(sigma) weight_multiplicity(alpha+rho-sigma(rho)), rho=(4,3,2,1,0)",
+  "shape_runs": [
+    {
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "target_weights": 690,
+      "states_after_height3_columns": 3795,
+      "height3_columns": 29,
+      "has_final_height2_column": true
+    },
+    {
+      "gl3_partition_pi": [
+        30,
+        30,
+        30
+      ],
+      "modulus": 1000000007,
+      "target_weights": 120,
+      "states_after_height3_columns": 381,
+      "height3_columns": 30,
+      "has_final_height2_column": false
+    }
+  ],
+  "multiplicities": [
+    {
+      "label": "degree89_candidate_1",
+      "alpha": [
+        41,
+        40,
+        36,
+        32,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 803846417,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_10",
+      "alpha": [
+        43,
+        40,
+        34,
+        32,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 666721757,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_11",
+      "alpha": [
+        43,
+        40,
+        35,
+        31,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 307844437,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_12",
+      "alpha": [
+        43,
+        40,
+        35,
+        32,
+        28
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 210363517,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_13",
+      "alpha": [
+        43,
+        40,
+        36,
+        30,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 375316095,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_14",
+      "alpha": [
+        43,
+        40,
+        36,
+        31,
+        28
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 813615650,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_15",
+      "alpha": [
+        43,
+        40,
+        36,
+        32,
+        27
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 572838669,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_2",
+      "alpha": [
+        42,
+        39,
+        36,
+        32,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 286133575,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_3",
+      "alpha": [
+        42,
+        40,
+        35,
+        32,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 5455183,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_4",
+      "alpha": [
+        42,
+        40,
+        36,
+        31,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 811479719,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_5",
+      "alpha": [
+        42,
+        40,
+        36,
+        32,
+        28
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 592010520,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_6",
+      "alpha": [
+        43,
+        38,
+        36,
+        32,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 148430379,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_7",
+      "alpha": [
+        43,
+        39,
+        35,
+        32,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 925576564,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_8",
+      "alpha": [
+        43,
+        39,
+        36,
+        31,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 265417504,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree89_candidate_9",
+      "alpha": [
+        43,
+        39,
+        36,
+        32,
+        28
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 120182600,
+      "certified_nonzero_over_integers": true
+    },
+    {
+      "label": "degree90_target",
+      "alpha": [
+        43,
+        40,
+        36,
+        32,
+        29
+      ],
+      "gl3_partition_pi": [
+        30,
+        30,
+        30
+      ],
+      "modulus": 1000000007,
+      "shifted_weight_terms": 120,
+      "schur_multiplicity_mod_prime": 412469725,
+      "certified_nonzero_over_integers": true
+    }
+  ],
+  "open_limitations": [
+    "Residues are modulo one prime; a nonzero residue rigorously proves nonzero integer multiplicity, but the exact integer multiplicities are not computed here.",
+    "This does not construct explicit highest-weight vectors inside Sym^89(S_mu W) or test J_8 membership."
+  ]
+}

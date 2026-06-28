@@ -50,9 +50,9 @@ Status values: `[ ]` pending, `[~]` in progress, `[x]` verified, `[!]` blocked o
 - [x] Write the staged attack plan for the degree-89 symmetric-power and \(J_8\)-membership questions.
 - [x] Produce nonzero exact-torus-weight `89 x 89` and `90 x 90` minor/cofactor support witnesses.
 - [x] Reduce the degree-89 symmetric-power multiplicities to explicit GL5 plethysm coefficients.
-- [~] Implement coefficient engines for those GL5 plethysm coefficients: exact Sage LR reduction and modular Rust weight DP exist, but both need further pruning before they can produce an accepted certificate.
-- [ ] Compute symmetric-power multiplicities for the 15 \(V=S_\lambda W\) candidates.
-- [~] Record all relevant multiplicities in tensor and symmetric powers.
+- [x] Compute symmetric-power multiplicity nonvanishing for the 15 \(V=S_\lambda W\) candidates by modular Rust weight DP.
+- [x] Record all relevant tensor-level and symmetric-power nonvanishing multiplicity certificates.
+- [~] Keep exact Sage LR reduction as a secondary implementation; it is not yet optimized enough for the full target.
 - [ ] Solve raising-operator linear systems on the exact-weight minor/cofactor spans.
 - [ ] Construct every relevant symmetric-power embedding in degree 89.
 - [ ] Prove/evaluate that no relevant copy lies in \(J_8\).

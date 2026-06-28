@@ -15,11 +15,8 @@
   Littlewood--Richardson/tensor level
 - Weight supports: nonzero exact-torus-weight `89 x 89` minor witnesses found
   for all 15 candidates
-- Symmetric multiplicities: reduced to explicit GL5 plethysm coefficients;
-  coefficient values still open
-- Multiplicity engines: exact Sage Jacobi--Trudi/LR and modular Rust
-  weight-DP implementations exist, but both are in-progress and not accepted
-  as certificates
+- Symmetric multiplicities: nonzero residues modulo `1000000007` certified for
+  all 15 degree-89 candidates and for the degree-90 target
 - Current work: solve the raising-operator linear systems, construct the
   symmetric-power copies, and decide whether a
   hidden projection or linear combination still gives the required Schur

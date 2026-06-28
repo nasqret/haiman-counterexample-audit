@@ -338,8 +338,12 @@ explicit GL5 plethysm coefficients recorded in
 \begin{center}
   \cert{results/certificates/lemma19_symmetric_multiplicity_targets.json}.
 \end{center}
-Two implementation routes are now present, but neither is an accepted
-certificate yet.
+The accepted certificate is now
+\begin{center}
+  \cert{results/certificates/lemma19_symmetric_multiplicities.json}.
+\end{center}
+It proves nonzero residues modulo \(1000000007\) for all 15 degree-89
+candidates and also for the degree-90 target.
 
 The Sage route
 \begin{center}
@@ -351,22 +355,29 @@ uses Jacobi--Trudi and the symmetric-matrix Cauchy identity
   =\bigoplus_{\lambda\vdash k,\ \ell(\lambda)\le5} S_{2\lambda}V
 \]
 to turn the GL5 plethysm coefficients into ordinary
-Littlewood--Richardson products.  This is a theorem-level reduction, but the
-current direct summation did not return the first target within 90 seconds on
-the local machine.
+Littlewood--Richardson products.  This is a theorem-level reduction, but it is
+currently only a secondary implementation route: the direct summation did not
+return the first target within 90 seconds on the local machine.
 
 The Rust route
 \begin{center}
   \cert{artifacts/rust/src/bin/plethysm_multiplicity.rs}
 \end{center}
 uses a modular semistandard-column dynamic program and then extracts Schur
-multiplicities with the Weyl character formula.  A nonzero residue modulo a
-prime would be a rigorous nonzero certificate, but the current dense-state
-implementation reached about \(7\cdot10^5\) states at column 11 of 29 and was
-interrupted as too slow/high-memory.
+multiplicities with the Weyl character formula
+\[
+  m_\alpha=
+  \sum_{\sigma\in S_5}\operatorname{sgn}(\sigma)\,
+  M(\alpha+\rho-\sigma\rho),\qquad \rho=(4,3,2,1,0).
+\]
+After changing residue storage from 64-bit to 32-bit arithmetic, the dense
+weight-DP completed locally in about 389 seconds and wrote the certificate
+above.  Since every recorded residue is nonzero modulo \(1000000007\), every
+corresponding integer multiplicity is nonzero.
 
-Therefore the multiplicity values themselves remain open.  The next technical
-task is algorithmic pruning, not a change in the mathematical target.
+Therefore the symmetric-power occurrence question is closed at the
+nonvanishing level.  The remaining tasks are to construct the relevant
+highest-weight vectors and test their \(J_8\)-membership.
 
 \section{The actual contradiction to the literal sentence}
 
