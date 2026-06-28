@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-06-28T14:46:11+02:00",
+  "updated_at": "2026-06-28T14:53:07+02:00",
   "project": "haiman-counterexample-audit",
   "verdict": "open_audit",
   "source": {
@@ -93,11 +93,11 @@
     "github_repository": "https://github.com/nasqret/haiman-counterexample-audit",
     "github_pages": "https://nasqret.github.io/haiman-counterexample-audit/",
     "validation_run": {
-      "id": 28278278084,
+      "id": 28322828740,
       "conclusion": "success"
     },
     "pages_run": {
-      "id": 28278278079,
+      "id": 28322828752,
       "conclusion": "success"
     },
     "live_visual_qa": "passed",
