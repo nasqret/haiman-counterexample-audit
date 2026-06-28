@@ -14,6 +14,7 @@ PREDECESSORS = ROOT / "results/certificates/lemma19_predecessor_partitions.json"
 OUTPUT = ROOT / "results/certificates/lemma19_pivot_weight_audit.json"
 OUTPUT_89 = ROOT / "results/certificates/lemma19_89_minor_weight_audit.json"
 OUTPUT_RAISING = ROOT / "results/certificates/lemma19_claimed_weight_raising_audit.json"
+WEIGHT_SUPPORTS = ROOT / "results/certificates/lemma19_weight_supports.json"
 EXPECTED = (133, 130, 126, 122, 119, 60, 60, 60)
 ORIENTED_EXPECTED = (60, 60, 60, 133, 130, 126, 122, 119)
 TESTED_BOREL_ORDER = (4, 5, 6, 7, 8, 1, 2, 3)
@@ -426,6 +427,56 @@ def write_raising_report(manifest: dict, certificate: dict) -> None:
     print(json.dumps(report, sort_keys=True))
 
 
+def verify_weight_support_witnesses(manifest: dict, certificate: dict) -> None:
+    if not WEIGHT_SUPPORTS.exists():
+        return
+    support_certificate = json.loads(WEIGHT_SUPPORTS.read_text(encoding="utf-8"))
+    prime = int(certificate["prime"])
+    assignments = {
+        tuple(record["variable"]): int(record["value"])
+        for record in certificate["assignments"]
+    }
+
+    degree90 = support_certificate["degree90_target"]
+    degree90_rows = degree90["selected_rows"]
+    degree90_columns = degree90["selected_columns"]
+    degree90_weight = selected_minor_weight(manifest, degree90_rows, degree90_columns)
+    degree90_determinant = determinant_mod(
+        selected_matrix(manifest, assignments, prime, degree90_rows, degree90_columns),
+        prime,
+    )
+    assert degree90_weight == tuple(degree90["oriented_weight"])
+    assert degree90_determinant == degree90["determinant_mod_prime"]
+
+    verified_degree89 = 0
+    for record in support_certificate["degree89_candidates"]:
+        assert record["status"] == "nonzero_weight_support_found"
+        rows = record["selected_rows"]
+        columns = record["selected_columns"]
+        weight = selected_minor_weight(manifest, rows, columns)
+        determinant = determinant_mod(
+            selected_matrix(manifest, assignments, prime, rows, columns),
+            prime,
+        )
+        assert weight == tuple(record["oriented_weight"])
+        assert weight == tuple(record["target_minor_weight"])
+        assert determinant == record["determinant_mod_prime"]
+        assert determinant != 0
+        verified_degree89 += 1
+
+    assert verified_degree89 == 15
+    print(
+        json.dumps(
+            {
+                "status": "verified",
+                "artifact": str(WEIGHT_SUPPORTS.relative_to(ROOT)),
+                "degree89_witnesses": verified_degree89,
+            },
+            sort_keys=True,
+        )
+    )
+
+
 def main() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     certificate = json.loads(CERTIFICATE.read_text(encoding="utf-8"))
@@ -433,6 +484,7 @@ def main() -> None:
     write_pivot_report(manifest, certificate)
     write_89_minor_report(manifest, certificate, predecessors)
     write_raising_report(manifest, certificate)
+    verify_weight_support_witnesses(manifest, certificate)
 
 
 if __name__ == "__main__":

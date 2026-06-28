@@ -146,6 +146,8 @@ This should be read as a necessary candidate list, not as Lee's missing minimali
 
 Thus the nonzero $89\times89$ minor above refutes the broad wording "each minor", but it is not itself a degree-89 module that can feed the target $S_\nu W$.
 
+The next support-level check is now recorded in `results/certificates/lemma19_weight_supports.json`: for every one of the 15 candidate $\lambda$'s, there is a certified nonzero $89\times89$ determinant of the Borel-oriented $\lambda$ torus weight. This shows that the relevant exact weights are present in the reconstructed cofactor span. It still does not prove highest-weight annihilation, construct the symmetric-power copy, or test $J_8$ membership.
+
 ## Why all maximal minors are in $J_8$
 
 On $P_8$, the ideal-projector equations give $C=Mz=0$. The centered vector $z$ is nonzero on a nonempty open subset: the radical standard simplex $\{0,e_1,\ldots,e_8\}$ already supplies a witness. Therefore $M$ has a nontrivial kernel and rank at most 89 on a dense open subset of the reduced irreducible principal component. Every maximal minor vanishes densely, hence belongs to $J_8$.

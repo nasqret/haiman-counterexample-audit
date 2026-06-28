@@ -42,6 +42,7 @@ Current certificates separate three facts that the paper states together:
 - `lemma19_claimed_weight_raising_audit.json`: a different nonzero maximal minor has the claimed torus weight, but nonzero raising derivatives show it is not itself a highest-weight vector.
 - `lemma19_89_minor_weight_audit.json`: a certified nonzero $89\times89$ minor is not a weight of any of the 15 certified degree-89 predecessor modules.
 - `lemma19_minimality_relevant_modules.json`: the 15 Schur-highest weights $\lambda$ for which $S_\lambda W\otimes S_\mu W$ can contain the target $S_\nu W$, with pointers to the LR-chain certificate.
+- `lemma19_weight_supports.json`: nonzero exact-torus-weight minor witnesses for the Borel-oriented degree-90 target and for all 15 Borel-oriented degree-89 candidates.
 
 Thus the nonvanishing computation is real, but the printed representation membership statements cannot be accepted literally.
 
@@ -52,3 +53,5 @@ The fifteen candidate degree-89 partitions and all relevant multiplicity-space m
 The partition enumeration itself is now certified. There are 102 partitions with nonzero LR coefficient into the target degree-90 partition. Tensor-product dominance removes 87, leaving exactly 15. Each survivor comes with an 88-step nonzero LR chain proving occurrence in the 89-fold tensor power. SageMath and an independently implemented Rust LR-tableau rule agree.
 
 This answers the first part of the degree-89 question: these 15 are exactly the currently certified candidates for a Schur module $V=S_\lambda W$ such that $V\otimes S_\mu W$ can contribute to $S_\nu W$. It does **not** answer the harder question whether the corresponding copies occur inside the symmetric power in a way that lies in `J_8`. The separate symmetric-power embedding and `J_8` exclusion remain open.
+
+The weight-support artifact closes a still narrower gate: the candidate torus weights are not vacuous in the reconstructed minor/cofactor span. It does not certify highest-weight annihilation. The next certificate must solve the raising-operator linear systems on these exact-weight spans.

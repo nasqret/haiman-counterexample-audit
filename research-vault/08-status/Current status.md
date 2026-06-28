@@ -13,7 +13,10 @@
 - Representation audit: two literal Lemma 19 membership sentences refuted as written
 - Degree-89 candidates: 15 \(V=S_\lambda W\) modules certified at
   Littlewood--Richardson/tensor level
-- Current work: construct the symmetric-power copies and decide whether a
+- Weight supports: nonzero exact-torus-weight `89 x 89` minor witnesses found
+  for all 15 candidates
+- Current work: solve the raising-operator linear systems, construct the
+  symmetric-power copies, and decide whether a
   hidden projection or linear combination still gives the required Schur
   constituent
 - Main blocker: no independent certificate yet for degree-90 minimality or for absence of the required projection

@@ -51,6 +51,12 @@ Littlewood-Richardson/tensor level. It does not construct the actual embedded
 copies inside `Sym^89(S_mu)` and does not test their `J_8` membership; those
 are still the decisive open minimality checks.
 
+The next support-level gate is now also recorded:
+`results/certificates/lemma19_weight_supports.json` contains nonzero
+exact-torus-weight `89 x 89` minor witnesses for all 15 candidates. These are
+support witnesses only; highest-weight annihilation and `J_8` membership remain
+open.
+
 ## Repository map
 
 - `PLAN.md`, `JOURNAL.md`, `MEMORY.md`, `STATUS.json`: resumable project control.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-06-28T12:24:14+02:00",
+  "updated_at": "2026-06-28T13:15:41+02:00",
   "project": "haiman-counterexample-audit",
   "verdict": "open_audit",
   "source": {
@@ -21,6 +21,7 @@
     "degree_89_predecessor_enumeration": "certified_sage_rust",
     "degree_89_minimality_candidates": "certified_tensor_lr_list_actual_symmetric_embeddings_open",
     "degree_89_attack_plan": "written_weight_supports_then_symmetric_multiplicities_then_j8_membership_then_multiplication_projection",
+    "degree_89_weight_supports": "nonzero_exact_torus_weight_minor_witness_for_each_candidate_highest_weight_status_open",
     "degree_89_exclusion": "literal_all_89_minors_claim_refuted_not_by_itself_a_nonminimality_witness_embedding_exclusion_still_pending",
     "cohen_macaulay_conclusion": "pending"
   },
@@ -62,6 +63,8 @@
     "minor_89_max_predecessor_first_part": 132,
     "predecessor_payload_sha256": "57e87fae955efedd5211eab5fed48e154a2df1266b9414670a4f4def689e3c40",
     "minimality_relevant_modules_payload_sha256": "5b637f623bd05243e5f890eb0dc4324dcde3b0330ddd34aef19a0f82e7dbdbe2",
+    "weight_supports_payload_sha256": "f09815d86f342add8245a5a00dd9b59b207a9fcc9e8426b63978e0463091ed92",
+    "degree_89_exact_weight_witness_count": 15,
     "lr_predecessor_count": 102,
     "tensor_predecessor_count": 15,
     "symmetric_power_embeddings_constructed": false,
@@ -69,8 +72,10 @@
   },
   "next_artifacts": {
     "attack_plan": "book/chapters/degree89_attack_plan.md",
+    "completed_certificates": [
+      "results/certificates/lemma19_weight_supports.json"
+    ],
     "planned_certificates": [
-      "results/certificates/lemma19_weight_supports.json",
       "results/certificates/lemma19_symmetric_multiplicities.json",
       "results/certificates/lemma19_degree90_highest_weight_space.json",
       "results/certificates/lemma19_degree89_highest_weight_spaces.json",

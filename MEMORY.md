@@ -72,6 +72,15 @@ that the corresponding copies are constructed inside `Sym^89(S_mu)`, nor that
 they avoid or lie in `J_8`; that is a separate, still-open membership
 computation.
 
+Phase A support checkpoint: `results/certificates/lemma19_weight_supports.json`
+contains nonzero exact-torus-weight `89 x 89` minor witnesses for all 15
+candidate `lambda`s, plus the Borel-oriented degree-90 target witness. The
+payload SHA-256 is
+`f09815d86f342add8245a5a00dd9b59b207a9fcc9e8426b63978e0463091ed92`.
+These witnesses prove the relevant torus weights occur in the reconstructed
+minor/cofactor span; they are not highest-weight or `J_8`-membership
+certificates.
+
 ## Weight audit and ideal membership
 
 The paper's literal statement that the determinant of any maximal minor lies in `S_nu` is false for the reconstructed matrix. The certified nonzero pivot minor has torus weight

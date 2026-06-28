@@ -204,3 +204,22 @@ image from degree 89 into degree 90.
 The main technical design choice is to avoid expanding degree-89 polynomials.
 The planned computations use determinant/cofactor spans, finite-field
 evaluations, raising-operator linear systems, and rank certificates.
+
+## 2026-06-28 - Phase A weight-support witnesses
+
+- Added `artifacts/common/enumerate_weight_supports.py`, using binary weight
+  equations via `scipy.optimize.milp` and determinant checks at the recorded
+  finite-field specialization.
+- Generated `results/certificates/lemma19_weight_supports.json`.
+- The artifact verifies the previously known nonzero degree-90 determinant of
+  Borel-oriented \(\nu\)-weight.
+- For each of the 15 degree-89 candidates \(S_\lambda W\), it finds a nonzero
+  `89 x 89` determinant whose torus weight is the Borel-oriented \(\lambda\).
+- All 15 witnesses use deleted row `0`; singular MILP supports were excluded
+  when necessary before a nonzero determinant was found.
+- Added non-SciPy verification to `artifacts/common/analyze_minor_weight.py`,
+  so stored supports are checked by recomputing every determinant and weight.
+
+Boundary: these are exact torus-weight support witnesses, not highest-weight
+vectors. The next gate is the raising-operator linear system on the
+exact-weight spans.

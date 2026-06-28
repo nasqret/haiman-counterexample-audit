@@ -87,18 +87,35 @@ highest-weight annihilation or an explicit isotypic projection.
    \sum_{\gamma\in C}\operatorname{wt}(\gamma).
    $$
 
-3. Enumerate, by dynamic programming or integer programming, the row/column
-   supports of:
+3. Enumerate or witness, by dynamic programming or integer programming, the
+   row/column supports of:
 
    - \(90\times90\) minors with target weight in the Weyl orbit of \(\nu\);
    - \(89\times89\) minors with weights compatible with each candidate
      \(\lambda\).
 
-4. Store counts and support hashes in
+4. Store verified support witnesses, and exact counts where feasible, in
    `results/certificates/lemma19_weight_supports.json`.
 
 Decision gate: if no support exists for a candidate \(\lambda\), that
 candidate cannot be produced from the relevant minor/cofactor span.
+
+### Phase A checkpoint
+
+This gate is now partially closed by
+`results/certificates/lemma19_weight_supports.json`.
+
+The artifact records:
+
+- the previously certified nonzero \(90\times90\) minor of Borel-oriented
+  \(\nu\)-weight;
+- for every one of the 15 degree-89 candidates \(\lambda\), a nonzero
+  \(89\times89\) determinant of Borel-oriented \(\lambda\)-weight.
+
+This proves that the exact torus weights are present in the reconstructed
+minor/cofactor span. It does not prove that any listed determinant is a
+highest-weight vector, and it does not construct an embedded copy of
+\(S_\lambda W\) inside \(\operatorname{Sym}^{89}(S_\mu W)\).
 
 ## Phase B: compute symmetric-power multiplicities
 
@@ -227,7 +244,9 @@ audit.
 
 ## Implementation order
 
-1. `lemma19_weight_supports.json`: count the candidate minor/cofactor supports.
+1. `lemma19_weight_supports.json`: produce nonzero exact-weight support
+   witnesses for the candidate minor/cofactor supports. **Done for the
+   Borel-oriented degree-90 target and all 15 degree-89 candidates.**
 2. `lemma19_symmetric_multiplicities.json`: compute \(m_\lambda\) for the 15
    candidates.
 3. `lemma19_degree90_highest_weight_space.json`: prove the maximal-minor span

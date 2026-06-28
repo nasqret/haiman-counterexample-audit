@@ -23,3 +23,11 @@ The decision criterion is:
   15 candidates, repairs this part of Lemma 19.
 
 Full plan: `../../book/chapters/degree89_attack_plan.md`.
+
+Current Phase A result:
+
+- `results/certificates/lemma19_weight_supports.json` contains nonzero
+  exact-torus-weight minor witnesses for the degree-90 target and all 15
+  degree-89 candidates.
+- These witnesses are not highest-weight certificates. The next step is the
+  raising-operator linear system on the exact-weight spans.
