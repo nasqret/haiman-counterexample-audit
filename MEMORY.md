@@ -81,6 +81,14 @@ These witnesses prove the relevant torus weights occur in the reconstructed
 minor/cofactor span; they are not highest-weight or `J_8`-membership
 certificates.
 
+Phase B reduction checkpoint:
+`results/certificates/lemma19_symmetric_multiplicity_targets.json` rewrites the
+15 degree-89 symmetric-power multiplicities as coefficients
+`[S_alpha(V):S_(30,30,29)(Sym^2 V)]` for `dim(V)=5`. The payload SHA-256 is
+`9dbfbd5f8b66b380352437e1d9df62f6bc706031efc3cd9e31a20b7cced0e579`. The
+coefficients are not computed yet; direct Sage plethysm expansion was too slow
+for use as the primary route.
+
 ## Weight audit and ideal membership
 
 The paper's literal statement that the determinant of any maximal minor lies in `S_nu` is false for the reconstructed matrix. The certified nonzero pivot minor has torus weight

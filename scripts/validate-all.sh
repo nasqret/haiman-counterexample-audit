@@ -40,6 +40,8 @@ fi
 python3 -m json.tool results/certificates/lemma19_predecessor_partitions.json >/dev/null
 python3 -m json.tool results/certificates/lemma19_minimality_relevant_modules.json >/dev/null
 python3 -m json.tool results/certificates/lemma19_weight_supports.json >/dev/null
+python3 artifacts/common/reduce_symmetric_multiplicities.py >/dev/null
+python3 -m json.tool results/certificates/lemma19_symmetric_multiplicity_targets.json >/dev/null
 
 if [[ -x "$ROOT/.venv/bin/python" ]]; then
   "$ROOT/.venv/bin/python" artifacts/common/analyze_minor_weight.py

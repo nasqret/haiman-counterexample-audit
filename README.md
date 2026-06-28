@@ -57,6 +57,11 @@ exact-torus-weight `89 x 89` minor witnesses for all 15 candidates. These are
 support witnesses only; highest-weight annihilation and `J_8` membership remain
 open.
 
+The symmetric-power multiplicity questions have been reduced to explicit GL5
+plethysm coefficients in
+`results/certificates/lemma19_symmetric_multiplicity_targets.json`; the
+coefficient values are not yet computed.
+
 ## Repository map
 
 - `PLAN.md`, `JOURNAL.md`, `MEMORY.md`, `STATUS.json`: resumable project control.

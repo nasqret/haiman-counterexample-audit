@@ -223,3 +223,20 @@ evaluations, raising-operator linear systems, and rank certificates.
 Boundary: these are exact torus-weight support witnesses, not highest-weight
 vectors. The next gate is the raising-operator linear system on the
 exact-weight spans.
+
+## 2026-06-28 - Phase B symmetric-multiplicity reduction
+
+- Added `artifacts/common/reduce_symmetric_multiplicities.py`.
+- Generated `results/certificates/lemma19_symmetric_multiplicity_targets.json`.
+- The degree-89 multiplicity question for each candidate now reduces to a GL5
+  plethysm coefficient
+  \([S_\alpha V:S_{(30,30,29)}(\operatorname{Sym}^2 V)]\).
+- The degree-90 target similarly reduces to
+  \([S_{(43,40,36,32,29)}V:S_{(30,30,30)}(\operatorname{Sym}^2 V)]\).
+- Direct Sage plethysm expansion was tested and interrupted after it failed to
+  return promptly for one coefficient; it should not be used as the primary
+  method.
+
+Next implementation should compute the listed coefficients by a targeted
+semistandard-tableau/character DP, probably in Rust or optimized Python with
+aggressive pruning.

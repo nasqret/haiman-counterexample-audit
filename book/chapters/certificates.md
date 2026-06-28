@@ -43,6 +43,7 @@ Current certificates separate three facts that the paper states together:
 - `lemma19_89_minor_weight_audit.json`: a certified nonzero $89\times89$ minor is not a weight of any of the 15 certified degree-89 predecessor modules.
 - `lemma19_minimality_relevant_modules.json`: the 15 Schur-highest weights $\lambda$ for which $S_\lambda W\otimes S_\mu W$ can contain the target $S_\nu W$, with pointers to the LR-chain certificate.
 - `lemma19_weight_supports.json`: nonzero exact-torus-weight minor witnesses for the Borel-oriented degree-90 target and for all 15 Borel-oriented degree-89 candidates.
+- `lemma19_symmetric_multiplicity_targets.json`: the reduced GL5 plethysm coefficients whose values would give the symmetric-power multiplicities.
 
 Thus the nonvanishing computation is real, but the printed representation membership statements cannot be accepted literally.
 
@@ -55,3 +56,5 @@ The partition enumeration itself is now certified. There are 102 partitions with
 This answers the first part of the degree-89 question: these 15 are exactly the currently certified candidates for a Schur module $V=S_\lambda W$ such that $V\otimes S_\mu W$ can contribute to $S_\nu W$. It does **not** answer the harder question whether the corresponding copies occur inside the symmetric power in a way that lies in `J_8`. The separate symmetric-power embedding and `J_8` exclusion remain open.
 
 The weight-support artifact closes a still narrower gate: the candidate torus weights are not vacuous in the reconstructed minor/cofactor span. It does not certify highest-weight annihilation. The next certificate must solve the raising-operator linear systems on these exact-weight spans.
+
+The symmetric-multiplicity target artifact reduces the next representation problem to coefficients of \(S_\alpha V\) in \(S_\pi(\operatorname{Sym}^2 V)\) for \(\dim V=5\). It does not compute those coefficients.

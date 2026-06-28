@@ -15,6 +15,8 @@
   Littlewood--Richardson/tensor level
 - Weight supports: nonzero exact-torus-weight `89 x 89` minor witnesses found
   for all 15 candidates
+- Symmetric multiplicities: reduced to explicit GL5 plethysm coefficients;
+  coefficient values still open
 - Current work: solve the raising-operator linear systems, construct the
   symmetric-power copies, and decide whether a
   hidden projection or linear combination still gives the required Schur

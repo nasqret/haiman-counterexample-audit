@@ -49,6 +49,7 @@ Status values: `[ ]` pending, `[~]` in progress, `[x]` verified, `[!]` blocked o
 - [x] Serialize the 15 tensor-level \(V=S_\lambda W\) candidates whose product with \(S_\mu W\) can contain \(S_\nu W\).
 - [x] Write the staged attack plan for the degree-89 symmetric-power and \(J_8\)-membership questions.
 - [x] Produce nonzero exact-torus-weight `89 x 89` and `90 x 90` minor/cofactor support witnesses.
+- [x] Reduce the degree-89 symmetric-power multiplicities to explicit GL5 plethysm coefficients.
 - [ ] Compute symmetric-power multiplicities for the 15 \(V=S_\lambda W\) candidates.
 - [~] Record all relevant multiplicities in tensor and symmetric powers.
 - [ ] Solve raising-operator linear systems on the exact-weight minor/cofactor spans.

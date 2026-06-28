@@ -132,6 +132,29 @@ Planned implementations:
 - JSON output in
   `results/certificates/lemma19_symmetric_multiplicities.json`.
 
+### Phase B reduction checkpoint
+
+The reduction target list is now recorded in
+`results/certificates/lemma19_symmetric_multiplicity_targets.json`.
+
+For every degree-89 candidate, the question reduces to a coefficient
+
+$$
+[S_\alpha V:S_{(30,30,29)}(\operatorname{Sym}^2 V)]
+\qquad \dim V=5.
+$$
+
+For the degree-90 target, the analogous coefficient is
+
+$$
+[S_{(43,40,36,32,29)}V:S_{(30,30,30)}(\operatorname{Sym}^2 V)].
+$$
+
+Direct Sage plethysm expansion was tested and is not the intended route: it did
+not finish promptly even for one coefficient.  The next implementation should
+compute these coefficients by a targeted tableau/character DP, not by expanding
+the whole plethysm.
+
 Decision gate:
 
 - if \(m_\lambda=0\), then the tensor-level candidate does not actually occur
@@ -248,7 +271,9 @@ audit.
    witnesses for the candidate minor/cofactor supports. **Done for the
    Borel-oriented degree-90 target and all 15 degree-89 candidates.**
 2. `lemma19_symmetric_multiplicities.json`: compute \(m_\lambda\) for the 15
-   candidates.
+   candidates. The reduced GL5 target list is already stored in
+   `lemma19_symmetric_multiplicity_targets.json`; the coefficients themselves
+   remain open.
 3. `lemma19_degree90_highest_weight_space.json`: prove the maximal-minor span
    actually contains the required \(S_\nu W\).
 4. `lemma19_degree89_highest_weight_spaces.json`: construct candidate

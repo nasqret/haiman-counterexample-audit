@@ -31,3 +31,10 @@ Current Phase A result:
   degree-89 candidates.
 - These witnesses are not highest-weight certificates. The next step is the
   raising-operator linear system on the exact-weight spans.
+
+Current Phase B reduction:
+
+- `results/certificates/lemma19_symmetric_multiplicity_targets.json` lists the
+  GL5 plethysm coefficients whose values would give the symmetric-power
+  multiplicities.
+- The coefficients are still open; direct Sage plethysm expansion was too slow.

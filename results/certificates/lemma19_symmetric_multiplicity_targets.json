@@ -1,0 +1,611 @@
+{
+  "borel_order": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    1,
+    2,
+    3
+  ],
+  "degree89_targets": [
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        130,
+        129,
+        125,
+        121,
+        118
+      ],
+      "candidate_index": 1,
+      "coefficient_to_compute": "[S_(41, 40, 36, 32, 29)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        41,
+        40,
+        36,
+        32,
+        29
+      ],
+      "original_partition": [
+        130,
+        129,
+        125,
+        121,
+        118,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        131,
+        128,
+        125,
+        121,
+        118
+      ],
+      "candidate_index": 2,
+      "coefficient_to_compute": "[S_(42, 39, 36, 32, 29)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        42,
+        39,
+        36,
+        32,
+        29
+      ],
+      "original_partition": [
+        131,
+        128,
+        125,
+        121,
+        118,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        131,
+        129,
+        124,
+        121,
+        118
+      ],
+      "candidate_index": 3,
+      "coefficient_to_compute": "[S_(42, 40, 35, 32, 29)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        42,
+        40,
+        35,
+        32,
+        29
+      ],
+      "original_partition": [
+        131,
+        129,
+        124,
+        121,
+        118,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        131,
+        129,
+        125,
+        120,
+        118
+      ],
+      "candidate_index": 4,
+      "coefficient_to_compute": "[S_(42, 40, 36, 31, 29)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        42,
+        40,
+        36,
+        31,
+        29
+      ],
+      "original_partition": [
+        131,
+        129,
+        125,
+        120,
+        118,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        131,
+        129,
+        125,
+        121,
+        117
+      ],
+      "candidate_index": 5,
+      "coefficient_to_compute": "[S_(42, 40, 36, 32, 28)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        42,
+        40,
+        36,
+        32,
+        28
+      ],
+      "original_partition": [
+        131,
+        129,
+        125,
+        121,
+        117,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        132,
+        127,
+        125,
+        121,
+        118
+      ],
+      "candidate_index": 6,
+      "coefficient_to_compute": "[S_(43, 38, 36, 32, 29)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        43,
+        38,
+        36,
+        32,
+        29
+      ],
+      "original_partition": [
+        132,
+        127,
+        125,
+        121,
+        118,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        132,
+        128,
+        124,
+        121,
+        118
+      ],
+      "candidate_index": 7,
+      "coefficient_to_compute": "[S_(43, 39, 35, 32, 29)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        43,
+        39,
+        35,
+        32,
+        29
+      ],
+      "original_partition": [
+        132,
+        128,
+        124,
+        121,
+        118,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        132,
+        128,
+        125,
+        120,
+        118
+      ],
+      "candidate_index": 8,
+      "coefficient_to_compute": "[S_(43, 39, 36, 31, 29)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        43,
+        39,
+        36,
+        31,
+        29
+      ],
+      "original_partition": [
+        132,
+        128,
+        125,
+        120,
+        118,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        132,
+        128,
+        125,
+        121,
+        117
+      ],
+      "candidate_index": 9,
+      "coefficient_to_compute": "[S_(43, 39, 36, 32, 28)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        43,
+        39,
+        36,
+        32,
+        28
+      ],
+      "original_partition": [
+        132,
+        128,
+        125,
+        121,
+        117,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        132,
+        129,
+        123,
+        121,
+        118
+      ],
+      "candidate_index": 10,
+      "coefficient_to_compute": "[S_(43, 40, 34, 32, 29)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        43,
+        40,
+        34,
+        32,
+        29
+      ],
+      "original_partition": [
+        132,
+        129,
+        123,
+        121,
+        118,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        132,
+        129,
+        124,
+        120,
+        118
+      ],
+      "candidate_index": 11,
+      "coefficient_to_compute": "[S_(43, 40, 35, 31, 29)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        43,
+        40,
+        35,
+        31,
+        29
+      ],
+      "original_partition": [
+        132,
+        129,
+        124,
+        120,
+        118,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        132,
+        129,
+        124,
+        121,
+        117
+      ],
+      "candidate_index": 12,
+      "coefficient_to_compute": "[S_(43, 40, 35, 32, 28)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        43,
+        40,
+        35,
+        32,
+        28
+      ],
+      "original_partition": [
+        132,
+        129,
+        124,
+        121,
+        117,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        132,
+        129,
+        125,
+        119,
+        118
+      ],
+      "candidate_index": 13,
+      "coefficient_to_compute": "[S_(43, 40, 36, 30, 29)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        43,
+        40,
+        36,
+        30,
+        29
+      ],
+      "original_partition": [
+        132,
+        129,
+        125,
+        119,
+        118,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        132,
+        129,
+        125,
+        120,
+        117
+      ],
+      "candidate_index": 14,
+      "coefficient_to_compute": "[S_(43, 40, 36, 31, 28)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        43,
+        40,
+        36,
+        31,
+        28
+      ],
+      "original_partition": [
+        132,
+        129,
+        125,
+        120,
+        117,
+        60,
+        59,
+        59
+      ]
+    },
+    {
+      "borel_oriented_weight": [
+        60,
+        59,
+        59,
+        132,
+        129,
+        125,
+        121,
+        116
+      ],
+      "candidate_index": 15,
+      "coefficient_to_compute": "[S_(43, 40, 36, 32, 27)(V) : S_(30, 30, 29)(Sym^2 V)] for dim(V)=5",
+      "degree": 89,
+      "gl3_partition_pi": [
+        30,
+        30,
+        29
+      ],
+      "gl5_target_alpha": [
+        43,
+        40,
+        36,
+        32,
+        27
+      ],
+      "original_partition": [
+        132,
+        129,
+        125,
+        121,
+        116,
+        60,
+        59,
+        59
+      ]
+    }
+  ],
+  "degree90_target": {
+    "borel_oriented_weight": [
+      60,
+      60,
+      60,
+      133,
+      130,
+      126,
+      122,
+      119
+    ],
+    "coefficient_to_compute": "[S_(43, 40, 36, 32, 29)(V) : S_(30, 30, 30)(Sym^2 V)] for dim(V)=5",
+    "degree": 90,
+    "gl3_partition_pi": [
+      30,
+      30,
+      30
+    ],
+    "gl5_target_alpha": [
+      43,
+      40,
+      36,
+      32,
+      29
+    ],
+    "original_partition": [
+      133,
+      130,
+      126,
+      122,
+      119,
+      60,
+      60,
+      60
+    ]
+  },
+  "formula": "For degree m and Borel-oriented weight (e1,e2,e3,f1,...,f5), the GL3 partition is pi=(m-e3,m-e2,m-e1) and the GL5 target is alpha=(f1-m,...,f5-m). The required multiplicity is the coefficient of S_alpha(V) in S_pi(Sym^2 V), dim(V)=5.",
+  "next_required_artifact": "results/certificates/lemma19_symmetric_multiplicities.json",
+  "payload_sha256": "9dbfbd5f8b66b380352437e1d9df62f6bc706031efc3cd9e31a20b7cced0e579",
+  "schema_version": 1,
+  "source": "degree-89 attack plan, Phase B reduction",
+  "status": "reduced_targets_only_coefficients_not_computed"
+}
