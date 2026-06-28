@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-06-27T06:07:56+02:00",
+  "updated_at": "2026-06-28T06:24:11+02:00",
   "project": "haiman-counterexample-audit",
   "verdict": "open_audit",
   "source": {
@@ -19,7 +19,8 @@
     "ideal_membership": "proved_dense_kernel_argument",
     "schur_membership": "literal_any_minor_claim_refuted_weight_compatible_minor_not_highest_required_constituent_still_open",
     "degree_89_predecessor_enumeration": "certified_sage_rust",
-    "degree_89_exclusion": "literal_all_89_minors_claim_refuted_embedding_exclusion_still_pending",
+    "degree_89_minimality_candidates": "certified_tensor_lr_list_actual_symmetric_embeddings_open",
+    "degree_89_exclusion": "literal_all_89_minors_claim_refuted_not_by_itself_a_nonminimality_witness_embedding_exclusion_still_pending",
     "cohen_macaulay_conclusion": "pending"
   },
   "environments": {
@@ -59,8 +60,11 @@
     "minor_89_dominant_weight": [140, 126, 123, 119, 115, 60, 59, 59],
     "minor_89_max_predecessor_first_part": 132,
     "predecessor_payload_sha256": "57e87fae955efedd5211eab5fed48e154a2df1266b9414670a4f4def689e3c40",
+    "minimality_relevant_modules_payload_sha256": "5b637f623bd05243e5f890eb0dc4324dcde3b0330ddd34aef19a0f82e7dbdbe2",
     "lr_predecessor_count": 102,
-    "tensor_predecessor_count": 15
+    "tensor_predecessor_count": 15,
+    "symmetric_power_embeddings_constructed": false,
+    "degree_89_j8_membership_tested": false
   },
   "publication": {
     "local_git": "committed",

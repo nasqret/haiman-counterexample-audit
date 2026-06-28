@@ -11,7 +11,11 @@
 - Matrix reconstruction: SageMath/Magma/Singular/Oscar/Rust agree on 1410 sparse entries
 - Nonvanishing: certified by a rank-90 specialization and determinant residue
 - Representation audit: two literal Lemma 19 membership sentences refuted as written
-- Current work: decide whether a hidden projection or linear combination still gives the required Schur constituent
+- Degree-89 candidates: 15 \(V=S_\lambda W\) modules certified at
+  Littlewood--Richardson/tensor level
+- Current work: construct the symmetric-power copies and decide whether a
+  hidden projection or linear combination still gives the required Schur
+  constituent
 - Main blocker: no independent certificate yet for degree-90 minimality or for absence of the required projection
 
 Machine-readable authority: `../../STATUS.json`.

@@ -46,8 +46,9 @@ Status values: `[ ]` pending, `[~]` in progress, `[x]` verified, `[!]` blocked o
 ## Phase 5 - Minimality
 
 - [x] Enumerate the claimed 15 partitions with reproducible LR code and independent Rust verification.
+- [x] Serialize the 15 tensor-level \(V=S_\lambda W\) candidates whose product with \(S_\mu W\) can contain \(S_\nu W\).
 - [~] Record all relevant multiplicities in tensor and symmetric powers.
-- [ ] Construct every relevant embedding in degree 89.
+- [ ] Construct every relevant symmetric-power embedding in degree 89.
 - [ ] Prove/evaluate that no relevant copy lies in \(J_8\).
 - [ ] Conclude that a degree-90 generator is minimal, or locate the failure.
 

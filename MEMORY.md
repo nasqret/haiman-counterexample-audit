@@ -1,6 +1,6 @@
 # Project memory
 
-Last updated: 2026-06-27 (Europe/Warsaw)
+Last updated: 2026-06-28 (Europe/Warsaw)
 
 ## Objective
 
@@ -58,10 +58,19 @@ The degree-89 predecessor enumeration is now reproducible.
 - Exactly 15 remain, matching Lee's unexplained count.
 - For every remaining partition, an explicit chain of 88 nonzero LR coefficients from `mu` to `lambda` certifies occurrence in `S_mu^(tensor 89)`.
 - SageMath certificate: `results/certificates/lemma19_predecessor_partitions.json`.
+- Minimality-candidate summary:
+  `results/certificates/lemma19_minimality_relevant_modules.json`.
 - Independent Rust LR-tableau verifier agrees on counts 102 and 15.
 - Payload SHA-256: `57e87fae955efedd5211eab5fed48e154a2df1266b9414670a4f4def689e3c40`.
+- Minimality-candidate payload SHA-256:
+  `5b637f623bd05243e5f890eb0dc4324dcde3b0330ddd34aef19a0f82e7dbdbe2`.
 
-This does not establish that the corresponding copies inside `Sym^89(S_mu)` avoid `J_8`; that is a separate, still-open membership computation.
+These 15 partitions are exactly the currently certified tensor-level
+candidates for a degree-89 Schur module `V=S_lambda(W)` such that
+`V tensor S_mu(W)` can contain the target `S_nu(W)`. This does not establish
+that the corresponding copies are constructed inside `Sym^89(S_mu)`, nor that
+they avoid or lie in `J_8`; that is a separate, still-open membership
+computation.
 
 ## Weight audit and ideal membership
 

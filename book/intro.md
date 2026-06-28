@@ -15,6 +15,12 @@ The decisive computation was not published. On pp. 1358-1359, Lemma 19 replaces 
 **Open audit.** The source and missing code have been reconstructed far enough to certify nonvanishing and refute two literal Lemma 19 representation claims. The counterexample itself is not yet independently certified or refuted.
 :::
 
+The degree-89 Littlewood--Richardson search is now separated from the
+minimality problem. The audit can list the 15 Schur modules
+$V=S_\lambda W$ for which $V\otimes S_\mu W$ can feed the target
+$S_\nu W$, but it has not yet constructed those copies inside
+$\operatorname{Sym}^{89}(S_\mu W)$ or tested their $J_8$ membership.
+
 ## What counts as a successful verification?
 
 A successful audit must provide:

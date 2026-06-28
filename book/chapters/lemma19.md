@@ -118,6 +118,34 @@ $$
 
 Every one of the 15 certified degree-89 predecessor partitions has first part at most 132. Hence this nonzero $89\times89$ minor is not a weight of any of those modules. This refutes the printed sentence as written, though it does not by itself settle the minimality claim for the required degree-90 constituent.
 
+## What the 15 degree-89 modules do certify
+
+The relevant Sage file, `artifacts/sage/enumerate_predecessors.sage`, is doing a Littlewood--Richardson/tensor-level computation. It now emits a compact certificate, `results/certificates/lemma19_minimality_relevant_modules.json`, whose meaning is:
+
+- $\mu=(3,1,1,1,1,1,1,0)$ is the degree-one coordinate representation;
+- $\nu=(133,130,126,122,119,60,60,60)$ is the target degree-90 representation;
+- exactly 15 partitions $\lambda$ satisfy the certified tensor-level requirements
+
+  $$
+  c^\nu_{\lambda,\mu}=1,\qquad
+  S_\lambda W\subset (S_\mu W)^{\otimes 89}.
+  $$
+
+These are precisely the current candidates for a Schur module
+
+$$
+V=S_\lambda W
+$$
+
+in degree 89 such that $V\otimes S_\mu W$ can contribute to $S_\nu W$ in degree 90.
+
+This should be read as a necessary candidate list, not as Lee's missing minimality certificate. Two harder steps remain open:
+
+1. construct the actual copies of those $S_\lambda W$ inside $\operatorname{Sym}^{89}(S_\mu W)$, rather than only certifying tensor-power occurrence;
+2. test those embedded copies against $J_8$, or equivalently compute their multiplication image in the $S_\nu W$-isotypic component of degree 90.
+
+Thus the nonzero $89\times89$ minor above refutes the broad wording "each minor", but it is not itself a degree-89 module that can feed the target $S_\nu W$.
+
 ## Why all maximal minors are in $J_8$
 
 On $P_8$, the ideal-projector equations give $C=Mz=0$. The centered vector $z$ is nonzero on a nonempty open subset: the radical standard simplex $\{0,e_1,\ldots,e_8\}$ already supplies a witness. Therefore $M$ has a nontrivial kernel and rank at most 89 on a dense open subset of the reduced irreducible principal component. Every maximal minor vanishes densely, hence belongs to $J_8$.

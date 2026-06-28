@@ -43,6 +43,14 @@ A separate nonzero `90 x 90` minor has the claimed torus weight, but it is not
 itself a highest-weight vector: five tested simple raising derivatives are
 nonzero modulo `1000003`.
 
+The 15 degree-89 candidates are now also serialized as
+`results/certificates/lemma19_minimality_relevant_modules.json`. This file
+answers the narrow question “which Schur modules \(V=S_\lambda W\) could
+contribute to the target through \(V\otimes S_\mu W\)?” at the
+Littlewood-Richardson/tensor level. It does not construct the actual embedded
+copies inside `Sym^89(S_mu)` and does not test their `J_8` membership; those
+are still the decisive open minimality checks.
+
 ## Repository map
 
 - `PLAN.md`, `JOURNAL.md`, `MEMORY.md`, `STATUS.json`: resumable project control.

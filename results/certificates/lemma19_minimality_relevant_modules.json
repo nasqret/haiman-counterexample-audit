@@ -1,0 +1,699 @@
+{
+  "candidate_count": 15,
+  "candidate_modules": [
+    {
+      "degree_89_highest_weight_lambda": [
+        130,
+        129,
+        125,
+        121,
+        118,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 1,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/0/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        131,
+        128,
+        125,
+        121,
+        118,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 2,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/1/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        131,
+        129,
+        124,
+        121,
+        118,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 3,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/2/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        131,
+        129,
+        125,
+        120,
+        118,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 4,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/3/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        131,
+        129,
+        125,
+        121,
+        117,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 5,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/4/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        132,
+        127,
+        125,
+        121,
+        118,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 6,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/5/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        132,
+        128,
+        124,
+        121,
+        118,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 7,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/6/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        132,
+        128,
+        125,
+        120,
+        118,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 8,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/7/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        132,
+        128,
+        125,
+        121,
+        117,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 9,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/8/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        132,
+        129,
+        123,
+        121,
+        118,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 10,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/9/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        132,
+        129,
+        124,
+        120,
+        118,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 11,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/10/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        132,
+        129,
+        124,
+        121,
+        117,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 12,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/11/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        132,
+        129,
+        125,
+        119,
+        118,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 13,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/12/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        132,
+        129,
+        125,
+        120,
+        117,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 14,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/13/tensor_lr_chain"
+      }
+    },
+    {
+      "degree_89_highest_weight_lambda": [
+        132,
+        129,
+        125,
+        121,
+        116,
+        60,
+        59,
+        59
+      ],
+      "degree_one_variables_highest_weight_mu": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "index": 15,
+      "j8_membership_status": "open_not_tested",
+      "littlewood_richardson_coefficient_c_nu_lambda_mu": 1,
+      "minimality_relevance": "This is a Schur-highest-weight candidate V=S_lambda(W) such that V tensor S_mu(W) can contain S_nu(W). It is not yet an explicitly embedded copy in Sym^89(S_mu(W)).",
+      "occurs_in_tensor_power_89": true,
+      "symmetric_power_embedding_status": "open_not_constructed",
+      "target_degree_90_highest_weight_nu": [
+        133,
+        130,
+        126,
+        122,
+        119,
+        60,
+        60,
+        60
+      ],
+      "tensor_power_certificate": {
+        "all_step_lr_coefficients_nonzero": true,
+        "certificate_file": "results/certificates/lemma19_predecessor_partitions.json",
+        "chain_length": 88,
+        "json_pointer": "/tensor_candidates/14/tensor_lr_chain"
+      }
+    }
+  ],
+  "computed_assertions": [
+    "There are exactly fifteen lambda with c^nu_{lambda,mu}>0 and certified occurrence in S_mu(W)^(tensor 89).",
+    "For every listed lambda, c^nu_{lambda,mu}=1 and the predecessor certificate supplies an 88-step LR chain."
+  ],
+  "mu": [
+    3,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0
+  ],
+  "nu": [
+    133,
+    130,
+    126,
+    122,
+    119,
+    60,
+    60,
+    60
+  ],
+  "open_questions": [
+    "Construct bases for the actual copies of these modules in Sym^89(S_mu(W)).",
+    "Test whether those embedded copies lie in J_8 or whether their multiplication image contributes to the target degree-90 S_nu(W)."
+  ],
+  "payload_sha256": "5b637f623bd05243e5f890eb0dc4324dcde3b0330ddd34aef19a0f82e7dbdbe2",
+  "purpose": "Compact list of the degree-89 Schur modules V=S_lambda(W) that can contribute to the target S_nu(W) after multiplication by the degree-one coordinate module S_mu(W), at the tensor/LR level.",
+  "schema_version": 1,
+  "source": "Lee 2010, Lemma 19, p. 1359",
+  "tensor_power": 89,
+  "theorem_boundary": "These tensor/LR candidates are necessary for a degree-89 source of S_nu(W), but tensor occurrence does not construct a copy inside Sym^89(S_mu(W))."
+}

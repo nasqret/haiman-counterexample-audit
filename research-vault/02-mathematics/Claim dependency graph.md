@@ -23,4 +23,9 @@ The degree-90 minimal generator is intended to force incompatible regularity.
 3. **Open-set branch:** Proposition 6, smoothness, codimension two, rational curves.
 4. **Propagation branch:** passage from \(d=8,n=9\) to Corollary B and the isospectral scheme.
 
+Degree-89 status within branch 1: the 15 tensor-level
+\(V=S_\lambda W\) candidates that can feed \(S_\nu W\) are certified. The
+actual copies inside \(\operatorname{Sym}^{89}(S_\mu W)\) and their
+\(J_8\)-membership are not yet certified.
+
 The verdict remains open until all four branches close.

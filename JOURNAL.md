@@ -164,3 +164,24 @@ maximal minors.
 Next implementation should use an optimized Rust tableau DP with componentwise
 zeta transforms over the 455 strict column types, or a high-memory nonwrapping
 convolution. The invalid cyclic NTT residue must not be cited.
+
+## 2026-06-28 - Clarified degree-89 minimality candidates
+
+- Addressed the concern that `artifacts/sage/enumerate_predecessors.sage` is
+  only a Littlewood--Richardson/tensor-power computation.
+- Added `results/certificates/lemma19_minimality_relevant_modules.json`, a
+  compact list of the 15 degree-89 Schur modules \(V=S_\lambda W\) for which
+  \(V\otimes S_\mu W\) can contain the target \(S_\nu W\).
+- Each listed candidate has `c^nu_(lambda,mu)=1` and points back to the
+  88-step LR-chain certificate in
+  `lemma19_predecessor_partitions.json`.
+- This is now documented as a necessary candidate list for minimality testing,
+  not as a construction of actual copies inside `Sym^89(S_mu)` and not as a
+  `J_8`-membership or exclusion test.
+- Updated the Lemma 19 report and book chapter to state that the certified
+  `89 x 89` minor refutes the literal phrase "each minor", but is not itself a
+  plausible nonminimality witness for the target \(S_\nu W\).
+
+Next decisive step: construct the symmetric-power multiplicity spaces for the
+15 candidates, then compute the \(S_\nu W\)-projection of the multiplication
+image from degree 89 into degree 90.

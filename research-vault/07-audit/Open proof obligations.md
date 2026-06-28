@@ -2,7 +2,8 @@
 
 1. Does Lee's \(p\)-to-\(q\) centering formula exactly match the column formula on p. 1359 in all delta cases?
 2. Does the span of maximal minors contain the stated irreducible summand? The selected weight-compatible minor is not itself a highest-weight vector.
-3. What are the 15 partitions, with multiplicities?
+3. Construct the actual embedded copies of the 15 certified degree-89
+   candidates \(S_\lambda W\) inside \(\operatorname{Sym}^{89}(S_\mu W)\).
 4. What does "none of their embeddings ... are in \(J_8\)" mean computationally when plethysm multiplicities exceed one?
 5. Which rational parametrization was used for membership tests, and what exact dense open subset does it cover?
 6. Is the passage from a degree-90 minimal generator of \(J_8\) to the claimed regularity bound using ideal regularity or quotient/projective regularity consistently?

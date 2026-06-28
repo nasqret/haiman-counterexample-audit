@@ -12,7 +12,9 @@
 | Weight-compatible maximal minor is highest | refuted for selected minor | `lemma19_claimed_weight_raising_audit.json` + Rust | nonzero raising derivatives |
 | Required Schur constituent exists in minors | pending | highest-weight/isotypic certificate | projection or linear combination still open |
 | Fifteen predecessor partitions | certified | Sage LR chains + Rust tableau verifier | 102 LR; 15 tensor |
+| Degree-89 \(V=S_\lambda W\) candidates for \(V\otimes S_\mu W\to S_\nu W\) | certified at tensor level | `lemma19_minimality_relevant_modules.json` | 15 candidates, all LR coefficient 1 |
 | Literal "each 89 x 89 minor in a predecessor module" | refuted | `lemma19_89_minor_weight_audit.json` + Rust | incompatible nonzero weight |
+| Copies of those candidates inside \(\operatorname{Sym}^{89}(S_\mu W)\) | pending | plethysm/symmetrization certificate | not constructed |
 | Degree-89 embedding exclusion | pending | rational-evaluation certificates | - |
 | Proposition 6 codimension | pending | independent CAS computation | - |
 | Theorem A | pending | final audit | - |

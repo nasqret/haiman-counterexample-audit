@@ -33,4 +33,15 @@ Current negative evidence:
 - a certified nonzero `89 x 89` minor has weight outside all 15 predecessor
   modules.
 
+Clarification after the degree-89 audit:
+
+- `artifacts/sage/enumerate_predecessors.sage` proves a
+  Littlewood--Richardson/tensor-level statement, not the missing minimality
+  statement.
+- `results/certificates/lemma19_minimality_relevant_modules.json` lists the
+  15 Schur modules \(V=S_\lambda W\) such that
+  \(V\otimes S_\mu W\) can contain the target \(S_\nu W\).
+- The actual embedded copies inside \(\operatorname{Sym}^{89}(S_\mu W)\) and
+  their \(J_8\)-membership remain open.
+
 See [[Matrix M specification]] and [[../06-certificates/Evidence ledger|Evidence ledger]].

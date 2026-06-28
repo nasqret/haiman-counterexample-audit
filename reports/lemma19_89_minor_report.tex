@@ -28,7 +28,7 @@
 
 \title{Technical report on the second literal assertion in Lee's Lemma 19}
 \author{Haiman counterexample audit project}
-\date{2026-06-27}
+\date{2026-06-28}
 
 \begin{document}
 \maketitle
@@ -42,9 +42,12 @@ choice is needed for this particular negative test, and what remains open.
 
 The current audit proves that one printed sentence in Lee's Lemma 19 is false
 if read literally: not every \(89\times 89\) minor belongs to one of the 15
-degree-89 predecessor modules.  This is a serious gap in the written proof, but
-it is not by itself a proof that the claimed degree-90 generator is nonminimal,
-nor a proof that Lee's theorem is false.
+degree-89 predecessor modules.  It also now records the more precise
+minimality-relevant list: the 15 Schur modules \(V=S_\lambda W\) for which
+\(V\otimes S_\mu W\) can contribute to the target \(S_\nu W\), at the
+Littlewood--Richardson/tensor-product level.  This is a serious gap in the
+written proof, but it is not by itself a proof that the claimed degree-90
+generator is nonminimal, nor a proof that Lee's theorem is false.
 \end{abstract}
 
 \section{Executive summary}
@@ -64,6 +67,17 @@ sentence on the degree-89 side.  The paper says, in effect, that each
 \(89\times89\) minor belongs to one of 15 modules obtained by a
 Littlewood--Richardson search.  The audit produced an explicit counterexample
 to that literal sentence.
+
+There are two separate statements here, and they must not be conflated:
+\begin{enumerate}
+  \item the 15 Littlewood--Richardson/tensor candidates are the only
+  Schur-highest weights \(\lambda\) presently certified for a degree-89
+  module \(V=S_\lambda W\) whose product with \(S_\mu W\) can contain
+  \(S_\nu W\);
+  \item the displayed \(89\times89\) minor is outside those 15 modules, so it
+  refutes the paper's broad wording, but it is not a candidate \(V\) that can
+  prove nonminimality of the target \(S_\nu W\).
+\end{enumerate}
 
 \begin{center}
 \begin{tabular}{p{0.22\linewidth}p{0.68\linewidth}}
@@ -276,6 +290,43 @@ The 15 endpoint partitions are:
 
 Every one has \(\lambda_1\le132\).
 
+\subsection{Answer to the requested \texorpdfstring{\(V\)}{V}-production step}
+
+At the level currently certified, the possible degree-89 Schur modules are
+exactly
+\[
+  V_\lambda=S_\lambda W
+\]
+for the 15 \(\lambda\)'s in the table above.  For each one the audit checks
+\[
+  c^\nu_{\lambda,\mu}=1
+\]
+and supplies an explicit chain of 88 nonzero Littlewood--Richardson
+coefficients proving occurrence in the tensor power
+\[
+  S_\lambda W \subset (S_\mu W)^{\otimes 89}.
+\]
+Consequently each listed \(V_\lambda\) is a necessary tensor-level candidate
+for a degree-89 source whose multiplication by degree-one variables can
+contribute to \(S_\nu W\) in degree 90.
+
+This is precisely what the file
+\begin{center}
+  \cert{results/certificates/lemma19_minimality_relevant_modules.json}
+\end{center}
+records.  It deliberately labels two further tasks as open:
+\begin{enumerate}
+  \item construct the actual copies of these modules inside
+  \(\Sym^{89}(S_\mu W)\), not merely inside the tensor power;
+  \item test the corresponding embedded copies against \(J_8\), or compute
+  their multiplication image in the \(S_\nu W\)-isotypic component of degree
+  90.
+\end{enumerate}
+
+Thus the audit can now produce the candidate highest weights for \(V\), but it
+has not yet produced the embedded submodules whose \(J_8\)-membership would
+settle Lee's minimality assertion.
+
 \section{The actual contradiction to the literal sentence}
 
 For a weight \(\alpha\) to occur in \(S_\lambda W\), its dominant reordering
@@ -315,6 +366,10 @@ counterexample to the literal reading of the sentence that each
   irreducibles.
   \item Therefore the printed universal statement about all \(89\times89\)
   minors is false if read literally.
+  \item The only currently certified degree-89 Schur-highest weights that can
+  feed \(S_\nu W\) through \(S_\lambda W\otimes S_\mu W\) are the 15 listed
+  above; this is recorded in
+  \cert{lemma19_minimality_relevant_modules.json}.
 \end{enumerate}
 
 \subsection{What is not proved}
@@ -328,6 +383,10 @@ counterexample to the literal reading of the sentence that each
   \item This does not rule out a corrected interpretation such as: ``each
   relevant \(89\times89\) component that can contribute to \(S_\nu W\) lies in
   one of these 15 modules.''
+  \item This does not construct the actual embedded \(S_\lambda W\)-copies
+  inside \(\Sym^{89}(S_\mu W)\).
+  \item This does not perform Lee's unpublished test that none of those
+  embedded copies lies in \(J_8\).
 \end{enumerate}
 
 The last point is important.  The displayed \(89\times89\) minor has dominant
@@ -395,9 +454,18 @@ List of 15 predecessor partitions &
 Sage LR enumeration plus independent Rust LR-tableau verifier &
 \level{Computation/certificate} \\
 \midrule
+Minimality-relevant \(V=S_\lambda W\) candidates &
+\cert{lemma19_minimality_relevant_modules.json}; same 15 \(\lambda\)'s, with
+\(c^\nu_{\lambda,\mu}=1\) and tensor-chain pointers &
+\level{Computation/certificate, tensor level only} \\
+\midrule
 Weight exclusion from the 15 modules &
 Highest-weight theory: weights of \(S_\lambda W\) are dominated by \(\lambda\) &
 \level{Theorem} \\
+\midrule
+Copies inside \(\Sym^{89}(S_\mu W)\) &
+Requires plethysm/symmetrization multiplicity-space data &
+\level{Open} \\
 \midrule
 Degree-90 minimality &
 Requires the \(S_\nu W\)-projection of \(R_1(J_8)_{89}\to(J_8)_{90}\) &
@@ -427,6 +495,7 @@ The important certificate files are:
   \item \cert{results/certificates/lemma19_89_minor_weight_audit.json};
   \item \cert{results/certificates/lemma19_claimed_weight_raising_audit.json};
   \item \cert{results/certificates/lemma19_predecessor_partitions.json};
+  \item \cert{results/certificates/lemma19_minimality_relevant_modules.json};
   \item \cert{results/certificates/lemma19_nonzero_minor.json}.
 \end{itemize}
 
