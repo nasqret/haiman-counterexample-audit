@@ -60,7 +60,12 @@ open.
 The symmetric-power multiplicity questions have been reduced to explicit GL5
 plethysm coefficients in
 `results/certificates/lemma19_symmetric_multiplicity_targets.json`; the
-coefficient values are not yet computed.
+coefficient values are not yet computed. Two in-progress engines now exist:
+`artifacts/sage/compute_symmetric_multiplicities.sage` reduces the coefficients
+to exact Littlewood-Richardson sums, and
+`artifacts/rust/src/bin/plethysm_multiplicity.rs` implements a modular
+weight-DP/Weyl-formula check. Neither has produced the accepted
+`lemma19_symmetric_multiplicities.json` certificate yet.
 
 ## Repository map
 

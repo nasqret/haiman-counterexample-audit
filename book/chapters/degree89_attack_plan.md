@@ -151,9 +151,59 @@ $$
 $$
 
 Direct Sage plethysm expansion was tested and is not the intended route: it did
-not finish promptly even for one coefficient.  The next implementation should
-compute these coefficients by a targeted tableau/character DP, not by expanding
-the whole plethysm.
+not finish promptly even for one coefficient.
+
+A sharper exact reduction is now implemented, but not yet fast enough for a
+certificate.  For \(\pi\in\{(30,30,29),(30,30,30)\}\), Jacobi--Trudi gives
+
+$$
+s_\pi(\operatorname{Sym}^2 V)
+  =
+  \det\bigl(h_{\pi_i-i+j}(\operatorname{Sym}^2 V)\bigr)_{1\le i,j\le 3}.
+$$
+
+The symmetric-matrix Cauchy identity gives
+
+$$
+h_k(\operatorname{Sym}^2 V)
+  =
+  \operatorname{Sym}^k(\operatorname{Sym}^2 V)
+  =
+  \bigoplus_{\lambda\vdash k,\ \ell(\lambda)\le5} S_{2\lambda}V.
+$$
+
+Thus every target coefficient is an exact signed sum of ordinary
+Littlewood--Richardson product coefficients among partitions of length at most
+5.  The script `artifacts/sage/compute_symmetric_multiplicities.sage`
+implements this theorem-level reduction.  In its current direct-summation
+form, it did not return the first target within 90 seconds on the local
+machine, so it is not yet a certified result.
+
+An independent modular Rust route is also started in
+`artifacts/rust/src/bin/plethysm_multiplicity.rs`.  It computes weight
+multiplicities of \(s_\pi(\operatorname{Sym}^2V)\) by semistandard-column
+dynamic programming and then applies
+
+$$
+m_\alpha
+ =
+ \sum_{\sigma\in S_5}\operatorname{sgn}(\sigma)\,
+ M(\alpha+\rho-\sigma\rho),
+\qquad \rho=(4,3,2,1,0),
+$$
+
+where \(M(\beta)\) is the target weight multiplicity.  A nonzero residue modulo
+a prime would rigorously prove \(m_\alpha>0\).  The current dense-state version
+reached about \(7\cdot10^5\) bounded states at column 11 of 29 for
+\((30,30,29)\) and was interrupted as too slow/high-memory.
+
+The next implementation should use one of the following narrower kernels
+rather than full plethysm expansion:
+
+- a pruned LR summation over intermediate partitions \(\tau\subseteq\alpha\);
+- a sparse/zeta semistandard-column DP with target-specific reachability;
+- or a cluster run only after the local state counts and memory profile are
+bounded.
 
 Decision gate:
 

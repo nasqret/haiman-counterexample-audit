@@ -240,3 +240,32 @@ exact-weight spans.
 Next implementation should compute the listed coefficients by a targeted
 semistandard-tableau/character DP, probably in Rust or optimized Python with
 aggressive pruning.
+
+## 2026-06-28 - Phase B multiplicity-engine attempts
+
+- Added `artifacts/sage/compute_symmetric_multiplicities.sage`.
+- The Sage route uses theorem-level reductions rather than full plethysm:
+  Jacobi--Trudi for \(s_\pi(\operatorname{Sym}^2V)\) and the symmetric-matrix
+  Cauchy identity
+  \[
+  h_k(\operatorname{Sym}^2V)=
+  \operatorname{Sym}^k(\operatorname{Sym}^2V)=
+  \bigoplus_{\lambda\vdash k,\ell(\lambda)\le5} S_{2\lambda}V.
+  \]
+- This turns each coefficient into a signed sum of ordinary
+  Littlewood--Richardson products in GL5. The current direct summation is still
+  too broad: the first degree-90 target did not return within 90 seconds
+  locally, even using `lrcalc.mult(..., maxrows=5)`.
+- Added `artifacts/rust/src/bin/plethysm_multiplicity.rs`.
+- The Rust route computes weight multiplicities modulo \(10^9+7\) by
+  semistandard-column DP and applies the Weyl character formula. A nonzero
+  residue would rigorously prove nonzero integer multiplicity.
+- The current dense-state Rust DP reached about 700k bounded weight states at
+  height-3 column 11/29 for \((30,30,29)\), then was interrupted as
+  too slow/high-memory.
+
+No `lemma19_symmetric_multiplicities.json` certificate has been accepted.
+Next attempt should either prune the LR summation over intermediate
+partitions \(\tau\subseteq\alpha\), replace the Rust state vectors with a
+sparse/zeta representation and target-specific reachability, or profile a
+bounded cluster run before submitting a long job.

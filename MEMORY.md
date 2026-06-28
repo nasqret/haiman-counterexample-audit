@@ -89,6 +89,16 @@ Phase B reduction checkpoint:
 coefficients are not computed yet; direct Sage plethysm expansion was too slow
 for use as the primary route.
 
+Phase B engine checkpoint: two reproducible but unfinished coefficient engines
+exist. `artifacts/sage/compute_symmetric_multiplicities.sage` uses
+Jacobi-Trudi plus
+`Sym^k(Sym^2 V)=direct_sum_{lambda partition k, len(lambda)<=5} S_{2lambda}V`
+to reduce the targets to ordinary GL5 LR products, but the first target did
+not finish within 90 seconds locally. `artifacts/rust/src/bin/plethysm_multiplicity.rs`
+uses modular semistandard-column DP plus Weyl character extraction, but the
+dense-state version reached about 700k states at column 11/29 and was
+interrupted. No `lemma19_symmetric_multiplicities.json` certificate exists yet.
+
 ## Weight audit and ideal membership
 
 The paper's literal statement that the determinant of any maximal minor lies in `S_nu` is false for the reconstructed matrix. The certified nonzero pivot minor has torus weight

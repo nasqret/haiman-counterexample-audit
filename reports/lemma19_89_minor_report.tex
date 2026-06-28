@@ -327,6 +327,47 @@ Thus the audit can now produce the candidate highest weights for \(V\), but it
 has not yet produced the embedded submodules whose \(J_8\)-membership would
 settle Lee's minimality assertion.
 
+\subsection{Current status of the symmetric-power multiplicity computation}
+
+The next representation-theoretic gate is the multiplicity
+\[
+  [S_\lambda W:\Sym^{89}(S_\mu W)]
+\]
+for the 15 candidates above.  The current repository reduces these numbers to
+explicit GL5 plethysm coefficients recorded in
+\begin{center}
+  \cert{results/certificates/lemma19_symmetric_multiplicity_targets.json}.
+\end{center}
+Two implementation routes are now present, but neither is an accepted
+certificate yet.
+
+The Sage route
+\begin{center}
+  \cert{artifacts/sage/compute_symmetric_multiplicities.sage}
+\end{center}
+uses Jacobi--Trudi and the symmetric-matrix Cauchy identity
+\[
+  h_k(\Sym^2 V)=\Sym^k(\Sym^2 V)
+  =\bigoplus_{\lambda\vdash k,\ \ell(\lambda)\le5} S_{2\lambda}V
+\]
+to turn the GL5 plethysm coefficients into ordinary
+Littlewood--Richardson products.  This is a theorem-level reduction, but the
+current direct summation did not return the first target within 90 seconds on
+the local machine.
+
+The Rust route
+\begin{center}
+  \cert{artifacts/rust/src/bin/plethysm_multiplicity.rs}
+\end{center}
+uses a modular semistandard-column dynamic program and then extracts Schur
+multiplicities with the Weyl character formula.  A nonzero residue modulo a
+prime would be a rigorous nonzero certificate, but the current dense-state
+implementation reached about \(7\cdot10^5\) states at column 11 of 29 and was
+interrupted as too slow/high-memory.
+
+Therefore the multiplicity values themselves remain open.  The next technical
+task is algorithmic pruning, not a change in the mathematical target.
+
 \section{The actual contradiction to the literal sentence}
 
 For a weight \(\alpha\) to occur in \(S_\lambda W\), its dominant reordering

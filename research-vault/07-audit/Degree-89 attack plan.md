@@ -38,3 +38,9 @@ Current Phase B reduction:
   GL5 plethysm coefficients whose values would give the symmetric-power
   multiplicities.
 - The coefficients are still open; direct Sage plethysm expansion was too slow.
+- In-progress engines:
+  `artifacts/sage/compute_symmetric_multiplicities.sage` gives an exact
+  Jacobi--Trudi/LR reduction, and
+  `artifacts/rust/src/bin/plethysm_multiplicity.rs` gives a modular
+  weight-DP/Weyl-formula route. Both currently need stronger pruning before
+  they can produce `lemma19_symmetric_multiplicities.json`.

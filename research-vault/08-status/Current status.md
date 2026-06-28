@@ -17,6 +17,9 @@
   for all 15 candidates
 - Symmetric multiplicities: reduced to explicit GL5 plethysm coefficients;
   coefficient values still open
+- Multiplicity engines: exact Sage Jacobi--Trudi/LR and modular Rust
+  weight-DP implementations exist, but both are in-progress and not accepted
+  as certificates
 - Current work: solve the raising-operator linear systems, construct the
   symmetric-power copies, and decide whether a
   hidden projection or linear combination still gives the required Schur

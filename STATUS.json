@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-06-28T13:24:48+02:00",
+  "updated_at": "2026-06-28T14:46:11+02:00",
   "project": "haiman-counterexample-audit",
   "verdict": "open_audit",
   "source": {
@@ -23,6 +23,7 @@
     "degree_89_attack_plan": "written_weight_supports_then_symmetric_multiplicities_then_j8_membership_then_multiplication_projection",
     "degree_89_weight_supports": "nonzero_exact_torus_weight_minor_witness_for_each_candidate_highest_weight_status_open",
     "degree_89_symmetric_multiplicity_targets": "reduced_to_gl5_plethysm_coefficients_coefficients_not_computed",
+    "degree_89_symmetric_multiplicity_engines": "in_progress_exact_sage_lr_reduction_and_modular_rust_weight_dp_both_need_pruning_before_certificate",
     "degree_89_exclusion": "literal_all_89_minors_claim_refuted_not_by_itself_a_nonminimality_witness_embedding_exclusion_still_pending",
     "cohen_macaulay_conclusion": "pending"
   },
@@ -66,6 +67,7 @@
     "minimality_relevant_modules_payload_sha256": "5b637f623bd05243e5f890eb0dc4324dcde3b0330ddd34aef19a0f82e7dbdbe2",
     "weight_supports_payload_sha256": "f09815d86f342add8245a5a00dd9b59b207a9fcc9e8426b63978e0463091ed92",
     "symmetric_multiplicity_targets_payload_sha256": "9dbfbd5f8b66b380352437e1d9df62f6bc706031efc3cd9e31a20b7cced0e579",
+    "symmetric_multiplicity_engine_status": "sage_lr_first_target_exceeded_90s_local_rust_dense_dp_reached_700k_states_at_column_11_of_29_interrupted",
     "degree_89_exact_weight_witness_count": 15,
     "lr_predecessor_count": 102,
     "tensor_predecessor_count": 15,

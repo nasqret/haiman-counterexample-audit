@@ -58,3 +58,16 @@ This answers the first part of the degree-89 question: these 15 are exactly the 
 The weight-support artifact closes a still narrower gate: the candidate torus weights are not vacuous in the reconstructed minor/cofactor span. It does not certify highest-weight annihilation. The next certificate must solve the raising-operator linear systems on these exact-weight spans.
 
 The symmetric-multiplicity target artifact reduces the next representation problem to coefficients of \(S_\alpha V\) in \(S_\pi(\operatorname{Sym}^2 V)\) for \(\dim V=5\). It does not compute those coefficients.
+
+Two coefficient engines have now been started but are not certificate artifacts
+yet:
+
+- `artifacts/sage/compute_symmetric_multiplicities.sage` reduces the
+  coefficients further to exact Littlewood--Richardson products using
+  Jacobi--Trudi and the symmetric-matrix Cauchy identity.
+- `artifacts/rust/src/bin/plethysm_multiplicity.rs` implements a modular
+  semistandard-column DP and Weyl-character extraction.
+
+Both are currently marked in-progress.  No file
+`lemma19_symmetric_multiplicities.json` has been accepted into the evidence
+ledger.
