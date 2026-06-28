@@ -47,9 +47,13 @@ Status values: `[ ]` pending, `[~]` in progress, `[x]` verified, `[!]` blocked o
 
 - [x] Enumerate the claimed 15 partitions with reproducible LR code and independent Rust verification.
 - [x] Serialize the 15 tensor-level \(V=S_\lambda W\) candidates whose product with \(S_\mu W\) can contain \(S_\nu W\).
+- [x] Write the staged attack plan for the degree-89 symmetric-power and \(J_8\)-membership questions.
+- [ ] Enumerate weight-compatible `89 x 89` and `90 x 90` minor/cofactor supports.
+- [ ] Compute symmetric-power multiplicities for the 15 \(V=S_\lambda W\) candidates.
 - [~] Record all relevant multiplicities in tensor and symmetric powers.
 - [ ] Construct every relevant symmetric-power embedding in degree 89.
 - [ ] Prove/evaluate that no relevant copy lies in \(J_8\).
+- [ ] Compute the multiplication image into the \(S_\nu W\)-isotypic component.
 - [ ] Conclude that a degree-90 generator is minimal, or locate the failure.
 
 ## Phase 6 - Cross-CAS artifacts

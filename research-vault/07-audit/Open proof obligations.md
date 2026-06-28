@@ -12,3 +12,5 @@
 9. Does the certified weight-compatible minor have a nonzero projection to the claimed irreducible, and can that projection be shown nonzero in `J_8` without expanding the determinant?
 
 These questions are blockers to a final verdict, not objections by themselves.
+
+Attack plan for obligations 2--5: [[Degree-89 attack plan]].

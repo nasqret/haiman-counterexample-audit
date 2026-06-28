@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-06-28T06:24:11+02:00",
+  "updated_at": "2026-06-28T12:24:14+02:00",
   "project": "haiman-counterexample-audit",
   "verdict": "open_audit",
   "source": {
@@ -20,6 +20,7 @@
     "schur_membership": "literal_any_minor_claim_refuted_weight_compatible_minor_not_highest_required_constituent_still_open",
     "degree_89_predecessor_enumeration": "certified_sage_rust",
     "degree_89_minimality_candidates": "certified_tensor_lr_list_actual_symmetric_embeddings_open",
+    "degree_89_attack_plan": "written_weight_supports_then_symmetric_multiplicities_then_j8_membership_then_multiplication_projection",
     "degree_89_exclusion": "literal_all_89_minors_claim_refuted_not_by_itself_a_nonminimality_witness_embedding_exclusion_still_pending",
     "cohen_macaulay_conclusion": "pending"
   },
@@ -65,6 +66,17 @@
     "tensor_predecessor_count": 15,
     "symmetric_power_embeddings_constructed": false,
     "degree_89_j8_membership_tested": false
+  },
+  "next_artifacts": {
+    "attack_plan": "book/chapters/degree89_attack_plan.md",
+    "planned_certificates": [
+      "results/certificates/lemma19_weight_supports.json",
+      "results/certificates/lemma19_symmetric_multiplicities.json",
+      "results/certificates/lemma19_degree90_highest_weight_space.json",
+      "results/certificates/lemma19_degree89_highest_weight_spaces.json",
+      "results/certificates/lemma19_degree89_j8_membership.json",
+      "results/certificates/lemma19_multiplication_to_nu.json"
+    ]
   },
   "publication": {
     "local_git": "committed",

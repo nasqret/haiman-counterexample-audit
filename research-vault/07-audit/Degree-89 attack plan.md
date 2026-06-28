@@ -1,0 +1,25 @@
+# Degree-89 attack plan
+
+This note tracks the plan for the questions raised about
+`enumerate_predecessors.sage` and `analyze_minor_weight.py`.
+
+Short version:
+
+1. Freeze the Borel convention and weight-support enumeration.
+2. Compute the symmetric-power multiplicities
+   \([S_\lambda W:\operatorname{Sym}^{89}(S_\mu W)]\) for the 15 certified
+   tensor-level candidates.
+3. Construct highest-weight spaces in compressed determinant/cofactor bases,
+   not in the full monomial basis.
+4. Evaluate those multiplicity spaces on radical points of the principal
+   component to decide intersection with \(J_8\).
+5. Compute the multiplication image
+   \(S_\mu W\otimes (J_8)_{89}\to (J_8)_{90}\) and project to \(S_\nu W\).
+
+The decision criterion is:
+
+- nonzero degree-89 \(J_8\)-source mapping to \(S_\nu W\) means nonminimality;
+- zero intersection with \(J_8\), or zero/missing multiplication image for all
+  15 candidates, repairs this part of Lemma 19.
+
+Full plan: `../../book/chapters/degree89_attack_plan.md`.

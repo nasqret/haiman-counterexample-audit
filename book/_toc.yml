@@ -13,10 +13,10 @@ parts:
   - caption: Verification
     chapters:
       - file: chapters/certificates
+      - file: chapters/degree89_attack_plan
       - file: chapters/geometry
       - file: chapters/implementations
   - caption: Conclusion
     chapters:
       - file: chapters/verdict
       - file: references
-

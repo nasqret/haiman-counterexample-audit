@@ -11,6 +11,7 @@ This vault is the navigable knowledge base for the independent audit of Lee (201
 - [[03-algorithms/Matrix M specification|Matrix M specification]]
 - [[06-certificates/Evidence ledger|Evidence ledger]]
 - [[07-audit/Open proof obligations|Open proof obligations]]
+- [[07-audit/Degree-89 attack plan|Degree-89 attack plan]]
 - [[08-status/Current status|Current status]]
 
 ## Ground rule

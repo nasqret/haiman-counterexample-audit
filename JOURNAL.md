@@ -185,3 +185,22 @@ convolution. The invalid cyclic NTT residue must not be cited.
 Next decisive step: construct the symmetric-power multiplicity spaces for the
 15 candidates, then compute the \(S_\nu W\)-projection of the multiplication
 image from degree 89 into degree 90.
+
+## 2026-06-28 - Degree-89 attack plan
+
+- Added a dedicated Jupyter Book chapter,
+  `book/chapters/degree89_attack_plan.md`, for the questions raised about the
+  LR enumeration and the missing degree-89 submodules.
+- The plan separates six gates:
+  weight-support enumeration, symmetric-power multiplicities, compressed
+  highest-weight construction, \(J_8\)-membership testing, multiplication into
+  \(S_\nu W\), and final minimality/nonminimality certification.
+- Added the short Obsidian note
+  `research-vault/07-audit/Degree-89 attack plan.md`.
+- Updated `PLAN.md` so the next implementation tasks are explicit:
+  enumerate weight-compatible supports, compute symmetric multiplicities, then
+  construct/test the actual embedded \(S_\lambda W\)-copies.
+
+The main technical design choice is to avoid expanding degree-89 polynomials.
+The planned computations use determinant/cofactor spans, finite-field
+evaluations, raising-operator linear systems, and rank certificates.
